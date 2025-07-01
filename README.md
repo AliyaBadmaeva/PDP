@@ -77,28 +77,42 @@ CREATE TABLE IF NOT EXISTS reviews (id_review SERIAl PRIMARY KEY, date_of_loadin
 CREATE TABLE IF NOT EXISTS student_group (id_student_group SERIAl PRIMARY KEY, id_curriculum INT NOT NULL);
 -- Создаем таблицу Студенты
 CREATE TABLE IF NOT EXISTS students (id_students SERIAl PRIMARY KEY, id_student_group INT NOT NULL);
+-- Ограничители помогут по уникальным полям нам от случайного задвоения информации.
 -- Добавим ограничители в таблицу Студенты
-ALTER TABLE students ADD CONSTRAINT id_students_UNIQUE UNIQUE (id_students);
+-- Уникальное сочетание 2 полей
+ALTER TABLE students ADD CONSTRAINT id_students_and_groups_UNIQUE UNIQUE (id_students, id_student_group);
+-- Внешний ключ, касакдное изменение при обновлении и ограничения при удалении
 ALTER TABLE students ADD CONSTRAINT id_student FOREIGN KEY (id_students) REFERENCES key_info (user_id) ON DELETE RESTRICT ON UP-DATE CASCADE;
+-- Внешний ключ, касакдное изменение при обновлении и ограничения при удалении
 ALTER TABLE students ADD CONSTRAINT id_student_group FOREIGN KEY (id_student_group) REFERENCES student_group (id_student_group) ON DE-LETE RESTRICT ON UPDATE CASCADE;
+-- Уникальное сочетание 2 полей
+ALTER TABLE student_group ADD CONSTRAINT id_student_groups_and_curric_UNIQUE UNIQUE (id_student_group, id_curriculum);
 -- Добавим ограничитель в таблицу Студенческие группы
 ALTER TABLE student_group ADD CONSTRAINT id_curriculum_idx FOR-EIGN KEY (id_curriculum) REFERENCES curriculum (id_curriculum) ON DELETE RESTRICT ON UPDATE CASCADE;
 -- Добавим ограничители в таблицу Отзывы
 ALTER TABLE reviews ADD CONSTRAINT id_review_UNIQUE UNIQUE (id_review);
+ALTER TABLE reviews ADD CONSTRAINT review_UNIQUE UNIQUE (re-view);
+ALTER TABLE reviews ADD CONSTRAINT review_user_subj_UNIQUE UNIQUE (user_id, id_learning_subjects, review);
 ALTER TABLE reviews ADD CONSTRAINT user_id FOREIGN KEY (us-er_id) REFERENCES key_info (user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE reviews ADD CONSTRAINT id_learning_subjects FOREIGN KEY (id_learning_subjects) REFERENCES learning_subjects (id_learning_subjects) ON DELETE RESTRICT ON UPDATE CASCADE;
+-- Добавим ограничители в таблицу Предметы
+ALTER TABLE subjects ADD CONSTRAINT id_sub_and_name_UNIQUE UNIQUE (name_of_subject);
 -- Добавим ограничители в таблицу Изученные предметы
-ALTER TABLE learning_subjects ADD CONSTRAINT id-tiime_of_learning_subjects_UNIQUE UNIQUE (id_learning_subjects);
+ALTER TABLE learning_subjects ADD CONSTRAINT cur-ric_semes_id_learning_subjects_UNIQUE UNIQUE (id_subject, id_curriculum, se-mester_after_learning);
+--Внешний ключ
 ALTER TABLE learning_subjects ADD CONSTRAINT id_curriculum_idx FOREIGN KEY (id_curriculum) REFERENCES curriculum (id_curriculum);
 ALTER TABLE learning_subjects ADD CONSTRAINT id_subject_idx FOR-EIGN KEY (id_subject) REFERENCES subjects (id_subject);
 -- Добавим ограничитель в таблицу Учебный план
 ALTER TABLE curriculum ADD CONSTRAINT id_profile_idx FOREIGN KEY (id_profile) REFERENCES profile (id_profile);
+ALTER TABLE curriculum ADD CONSTRAINT year_num_type_id_profile_UNIQUE UNIQUE (year_of_learning_start, num_of_semesters_of_study, type_of_higher_education, id_profile);
+-- Добавим ограничитель в таблицу Профиль
+ALTER TABLE profile ADD CONSTRAINT profile_UNIQUE UNIQUE (name_of_profile);
 -- Добавим ограничитель в таблицу Контактная информация
 ALTER TABLE contact_info ADD CONSTRAINT idcontact_info_UNIQUE UNIQUE (id_contact_info);
+ALTER TABLE contact_info ADD CONSTRAINT unique_info_UNIQUE UNIQUE (surname, name, patronymic, email);
 -- Добавим ограничители в таблицу Ключевая информация
-ALTER TABLE key_info ADD CONSTRAINT login_UNIQUE UNIQUE (log-in);
+ALTER TABLE key_info ADD CONSTRAINT login_pass_UNIQUE UNIQUE (login, password);
 ALTER TABLE key_info ADD CONSTRAINT id_contact_info_idx FOREIGN KEY (id_contact_info) REFERENCES contact_info (id_contact_info) ON DELETE RESTRICT ON UPDATE CASCADE;
-
 ```
 
 SQL-запросы на заполнение данных здесь не приводятся в целях сохранения персональных данных, однако они указаны в отчете.
