@@ -50,7 +50,7 @@
 -- Создаем БД
 create database itos;
 -- Создаем таблицу Контактная информация
-CREATE TABLE contact_info (id_contact_info SERIAl PRIMARY KEY, sur-name VARCHAR(45) NOT NULL, name VARCHAR(45) NOT NULL, patronymic VARCHAR(45) NOT NULL, email VARCHAR(45) NOT NULL);
+CREATE TABLE contact_info (id_contact_info SERIAl PRIMARY KEY, surname VARCHAR(45) NOT NULL, name VARCHAR(45) NOT NULL, patronymic VARCHAR(45) NOT NULL, email VARCHAR(45) NOT NULL);
 -- Создаем пользовательский тип enum для ролей
 CREATE TYPE enum_role AS ENUM('администратор', 'менеджер', 'студент', 'преподаватель');
 -- Создаем таблицу Ключевой информации
@@ -62,46 +62,46 @@ CREATE TABLE IF NOT EXISTS profile (id_profile SERIAl PRIMARY KEY, name_of_profi
 -- Создаем пользовательский тип для высшего образования
 CREATE TYPE enum_education AS ENUM('бакалавриат', 'магистратура', 'специалитет');
 -- Создаем таблицу Учебный план
-CREATE TABLE IF NOT EXISTS curriculum (id_curriculum SERIAl PRI-MARY KEY, year_of_learning_start SMALLINT NOT NULL, num_of_semesters_of_study SMALLINT NOT NULL, type_of_higher_education enum_education NOT NULL, id_profile INT NOT NULL);
--- Создаем пользовательский тип для преподаваемых на факультете дисци-плин
+CREATE TABLE IF NOT EXISTS curriculum (id_curriculum SERIAl PRIMARY KEY, year_of_learning_start SMALLINT NOT NULL, num_of_semesters_of_study SMALLINT NOT NULL, type_of_higher_education enum_education NOT NULL, id_profile INT NOT NULL);
+-- Создаем пользовательский тип для преподаваемых на факультете дисциплин
 CREATE TYPE enum_subjects AS ENUM('Автоматизация решения ОиРЗ в КИС', 'Базы данных', 'Алгоритмизация, программирование', 'Высокоуровневые методы прогр-ния');
 -- Создаем таблицу Предметы
 CREATE TABLE IF NOT EXISTS subjects (id_subject SERIAl PRIMARY KEY, name_of_subject enum_subjects NOT NULL);
 -- Создаем таблицу Изученные предметы
-CREATE TABLE IF NOT EXISTS learning_subjects (id_learning_subjects SE-RIAl PRIMARY KEY, id_subject INT NOT NULL, id_curriculum INT NOT NULL, semester_after_learning SMALLINT NOT NULL);
+CREATE TABLE IF NOT EXISTS learning_subjects (id_learning_subjects SERIAl PRIMARY KEY, id_subject INT NOT NULL, id_curriculum INT NOT NULL, semester_after_learning SMALLINT NOT NULL);
 -- Создаем пользовательский тип для эмоциональной окраски отзывов
 CREATE TYPE enum_sentiment AS ENUM('Негативный', 'Нейтральный', 'Положительный');
 -- Создаем таблицу Отзывы
-CREATE TABLE IF NOT EXISTS reviews (id_review SERIAl PRIMARY KEY, date_of_loading DATE NOT NULL, user_id INT NOT NULL, id_learning_subjects, review TEXT CONSTRAINT check_size CHECK (char_length(review) <= 512) NOT NULL, score_of_review FLOAT NULL, name_of_score enum_sentiment NULL);
+CREATE TABLE IF NOT EXISTS reviews (id_review SERIAl PRIMARY KEY, date_of_loading DATE NOT NULL, user_id INT NOT NULL, id_learning_subjects INT NOT NULL, review TEXT CONSTRAINT check_size CHECK (char_length(review) <= 512) NOT NULL, score_of_review FLOAT NULL, name_of_score enum_sentiment NULL);
 -- Создаем таблицу Студенческие группы
 CREATE TABLE IF NOT EXISTS student_group (id_student_group SERIAl PRIMARY KEY, id_curriculum INT NOT NULL);
 -- Создаем таблицу Студенты
 CREATE TABLE IF NOT EXISTS students (id_students SERIAl PRIMARY KEY, id_student_group INT NOT NULL);
--- Ограничители помогут по уникальным полям нам от случайного задвоения информации.
+-- Ограничители помогут по уникальным полям нам избежать случайного задвоения информации.
 -- Добавим ограничители в таблицу Студенты
 -- Уникальное сочетание 2 полей
 ALTER TABLE students ADD CONSTRAINT id_students_and_groups_UNIQUE UNIQUE (id_students, id_student_group);
 -- Внешний ключ, касакдное изменение при обновлении и ограничения при удалении
-ALTER TABLE students ADD CONSTRAINT id_student FOREIGN KEY (id_students) REFERENCES key_info (user_id) ON DELETE RESTRICT ON UP-DATE CASCADE;
+ALTER TABLE students ADD CONSTRAINT id_student FOREIGN KEY (id_students) REFERENCES key_info (user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 -- Внешний ключ, касакдное изменение при обновлении и ограничения при удалении
-ALTER TABLE students ADD CONSTRAINT id_student_group FOREIGN KEY (id_student_group) REFERENCES student_group (id_student_group) ON DE-LETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE students ADD CONSTRAINT id_student_group FOREIGN KEY (id_student_group) REFERENCES student_group (id_student_group) ON DELETE RESTRICT ON UPDATE CASCADE;
 -- Уникальное сочетание 2 полей
 ALTER TABLE student_group ADD CONSTRAINT id_student_groups_and_curric_UNIQUE UNIQUE (id_student_group, id_curriculum);
 -- Добавим ограничитель в таблицу Студенческие группы
 ALTER TABLE student_group ADD CONSTRAINT id_curriculum_idx FOR-EIGN KEY (id_curriculum) REFERENCES curriculum (id_curriculum) ON DELETE RESTRICT ON UPDATE CASCADE;
 -- Добавим ограничители в таблицу Отзывы
 ALTER TABLE reviews ADD CONSTRAINT id_review_UNIQUE UNIQUE (id_review);
-ALTER TABLE reviews ADD CONSTRAINT review_UNIQUE UNIQUE (re-view);
+ALTER TABLE reviews ADD CONSTRAINT review_UNIQUE UNIQUE (review);
 ALTER TABLE reviews ADD CONSTRAINT review_user_subj_UNIQUE UNIQUE (user_id, id_learning_subjects, review);
-ALTER TABLE reviews ADD CONSTRAINT user_id FOREIGN KEY (us-er_id) REFERENCES key_info (user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE reviews ADD CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES key_info (user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE reviews ADD CONSTRAINT id_learning_subjects FOREIGN KEY (id_learning_subjects) REFERENCES learning_subjects (id_learning_subjects) ON DELETE RESTRICT ON UPDATE CASCADE;
 -- Добавим ограничители в таблицу Предметы
 ALTER TABLE subjects ADD CONSTRAINT id_sub_and_name_UNIQUE UNIQUE (name_of_subject);
 -- Добавим ограничители в таблицу Изученные предметы
-ALTER TABLE learning_subjects ADD CONSTRAINT cur-ric_semes_id_learning_subjects_UNIQUE UNIQUE (id_subject, id_curriculum, se-mester_after_learning);
+ALTER TABLE learning_subjects ADD CONSTRAINT curric_semes_id_learning_subjects_UNIQUE UNIQUE (id_subject, id_curriculum, se-mester_after_learning);
 --Внешний ключ
 ALTER TABLE learning_subjects ADD CONSTRAINT id_curriculum_idx FOREIGN KEY (id_curriculum) REFERENCES curriculum (id_curriculum);
-ALTER TABLE learning_subjects ADD CONSTRAINT id_subject_idx FOR-EIGN KEY (id_subject) REFERENCES subjects (id_subject);
+ALTER TABLE learning_subjects ADD CONSTRAINT id_subject_idx FOREIGN KEY (id_subject) REFERENCES subjects (id_subject);
 -- Добавим ограничитель в таблицу Учебный план
 ALTER TABLE curriculum ADD CONSTRAINT id_profile_idx FOREIGN KEY (id_profile) REFERENCES profile (id_profile);
 ALTER TABLE curriculum ADD CONSTRAINT year_num_type_id_profile_UNIQUE UNIQUE (year_of_learning_start, num_of_semesters_of_study, type_of_higher_education, id_profile);
@@ -123,7 +123,7 @@ SQL-запросы на заполнение данных здесь не при
 
 Веб-ресурс будет иметь сетевую структуру, в нем будет присутсвовать максимальная связанность страниц друг с другом.
 
-* **Первая страница «Авторизация»** – это страница авторизации, где необходи-мо ввести логин и пароль. 
+* **Первая страница «Авторизация»** – это страница авторизации, где необходимо ввести логин и пароль. 
 
 * **Вторая страница «Главная»** – приветственная, на которой описывается информация о веб-ресурсе, на ней будет отображено предназначение веб-ресура – определение эмоциональной окраски, какие есть типы пользователей и какие у пользователей возможные действия.
 
