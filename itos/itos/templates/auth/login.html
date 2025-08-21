@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Вход на сайт | ИТОС</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--  Optional Bootstrap (delete if you don’t use it)  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-color: #9a0105;
+        }
+        body {
+            background: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+        .login-card {
+            width: 120%;
+            max-width: 380px;
+            padding: 2.5rem 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .1);
+
+        }
+
+        .login-card h6 {
+            margin-bottom: 0.5rem;
+            color: #343a40;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .card {
+            border-color: #ced4da;
+            border-radius: 10px 10px 0 0;
+            padding: 0.5rem;
+
+        }
+
+        .text-card {
+            border-color: #ced4da;
+            border-radius: 10px;
+            box-shadow: 0 0 0 .15rem rgba(0, 0, 0, .1);
+
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 .15rem rgba(0, 86, 179, .25);
+            border-color: var(--brand-color);
+        }
+        .btn-brand {
+            background: var(--brand-color);
+            border-color: #ced4da;
+            color: #f8f9fa;
+        }
+        .btn-brand:hover {
+            background: #ca3120;
+            border-color: #ca3120;
+        }
+        .inputs {
+            padding: 1.5rem;
+        }
+
+        .alert {
+            margin-top: 1rem;
+            font-size: .9rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+        <!--  Picture from your file  -->
+        <div class="text-card">
+        <div class="card">
+
+        <h6>Образовательная статистика</h6>
+        <h6>по ИТ-дисциплинам МУИВ - ИТОС</h6>
+        </div>
+
+        <!--  Django auth form  -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="inputs">
+
+            <!--  Username  -->
+            <div class="mb-3 text-start">
+                <input type="text"
+                       name="{{ form.username.html_name }}"
+                       id="{{ form.username.id_for_label }}"
+                       class="form-control"
+                       placeholder="Логин"
+                       required autofocus>
+            </div>
+
+            <!--  Password  -->
+            <div class="mb-3 text-start">
+                <input type="password"
+                       name="{{ form.password.html_name }}"
+                       id="{{ form.password.id_for_label }}"
+                       class="form-control"
+                       placeholder="Пароль"
+                       required>
+            </div>
+
+            <!--  Submit  -->
+            <button type="submit" class="btn btn-brand w-100 mt-2">
+                Вход
+            </button>
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.non_field_errors|join:" " }}
+                </div>
+
+            {% endif %}
+                </div>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
