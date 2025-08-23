@@ -4,7 +4,7 @@ import jaydebeapi
 conn = jaydebeapi.connect(
     "org.postgresql.Driver",
     "jdbc:postgresql://localhost:5432/itos",
-    ["postgres", "XXXXX"],
+    ["postgres", "XX"],
     "postgresql-42.7.7.jar"  # относительный путь к jar
 )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "XXXXXX"
+SECRET_KEY = "XX"
 
 # В продакшене - False
 DEBUG = True
