@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Вход на сайт | ИТОС</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link href="/static/css/bootstrap.min.css"
+         rel="stylesheet">
+    <link href="/static/css/index.css"
+         rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="login-card">
+        <div class="text-card">
+        <div class="card">
+
+        <h6>Образовательная статистика</h6>
+        <h6>по ИТ-дисциплинам МУИВ - ИТОС</h6>
+        </div>
+
+        <!--  Форма аутентификации  -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="inputs">
+
+            <!--  Логин  -->
+            <div class="mb-3 text-start">
+                <input type="text"
+                       name="{{ form.username.html_name }}"
+                       id="{{ form.username.id_for_label }}"
+                       class="form-control"
+                       placeholder="Логин"
+                       required autofocus>
+            </div>
+
+            <!--  Пароль  -->
+            <div class="mb-3 text-start">
+                <input type="password"
+                       name="{{ form.password.html_name }}"
+                       id="{{ form.password.id_for_label }}"
+                       class="form-control"
+                       placeholder="Пароль"
+                       required>
+            </div>
+
+            <!--  Вход  -->
+            <button type="submit" class="btn btn-brand w-100 mt-2">
+                Вход
+            </button>
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.non_field_errors|join:" " }}
+                </div>
+
+            {% endif %}
+                </div>
+        </form>
+        </div>
+    </div>
+</body>
+</html>

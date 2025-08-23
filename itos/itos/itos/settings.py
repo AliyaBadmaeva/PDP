@@ -1,31 +1,38 @@
 from pathlib import Path
+import jaydebeapi
 
+conn = jaydebeapi.connect(
+    "org.postgresql.Driver",
+    "jdbc:postgresql://localhost:5432/itos",
+    ["postgres", "XXXXX"],
+    "postgresql-42.7.7.jar"  # относительный путь к jar
+)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "XXXXXX"
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# В продакшене - False
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = '/main'
-# Application definition
+# редирект на главную после аутентификации
+AUTH_USER_MODEL = 'accounts.User'
+LOGIN_URL = 'login'                 # куда идти, если не авторизован
+LOGIN_REDIRECT_URL = 'role_redirect'
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
+    #"django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "main",
+    "accounts",
 ]
 
 MIDDLEWARE = [
@@ -68,7 +75,7 @@ DATABASES = {
         'NAME': 'itos',
         'USER': 'itos',
         'PASSWORD': 'wycj_2040!',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -108,7 +115,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [ BASE_DIR / 'static' ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
