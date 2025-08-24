@@ -1,37 +1,32 @@
 from pathlib import Path
 import jaydebeapi
+import sys
 
 conn = jaydebeapi.connect(
     "org.postgresql.Driver",
     "jdbc:postgresql://localhost:5432/itos",
-    ["postgres", "XX"],
+    ["postgres", "do_j12498!"],
     "postgresql-42.7.7.jar"  # относительный путь к jar
 )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "XX"
-
-# В продакшене - False
-DEBUG = True
+sys.path.insert(0, str(BASE_DIR / 'apps'))
 
 ALLOWED_HOSTS = []
 
 # редирект на главную после аутентификации
 AUTH_USER_MODEL = 'accounts.User'
-LOGIN_URL = 'login'                 # куда идти, если не авторизован
-LOGIN_REDIRECT_URL = 'role_redirect'
+LOGIN_URL = '/login/'                 # куда идти, если не авторизован
+LOGIN_REDIRECT_URL = '/blog/main/'
 
 INSTALLED_APPS = [
-    #"django.contrib.admin",
+    "django.contrib.admin",  # чтобы использовать встроенную админку Джанго
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "main",
+    "blog",
     "accounts",
 ]
 
@@ -66,19 +61,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "itos.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'itos',
-        'USER': 'itos',
-        'PASSWORD': 'wycj_2040!',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 
 
 # Password validation
