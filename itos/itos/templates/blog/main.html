@@ -1,71 +1,287 @@
 {% extends 'blog/index.html' %}
 {% load static %}
-{% block title %}Главная – МУ им. Витте{% endblock %}
+{% block title %}ИТОС - Главная{% endblock %}
 
 {% block body %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+<!DOCTYPE html>
+<html>
+<head>
 
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="#">
+    <style>
+    body {
+            font-family: Roboto;
+            margin: 0;
+            padding: 0;
+        }
+        .bg-white {
+            display: flex;
+            align-items: center;
+            /*   ---justify-content: space-between; --- */
+            padding: 20px;
+            /* ---background-color: #f8f9fa; --- */
+        }
 
-      <img src="{% static 'imgages/logo1_muiv.png' %}" height="28" class="me-2 rounded">
-      МУ им. Витте
-    </a>
+        .main-homepage .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .main-img {
+            flex: 1;
+            max-width: 30%;
+            border-radius: 20px;
+        }
+        .main-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
 
-    <div class="ms-auto d-flex align-items-center text-light me-3">
-      <span class="me-3">Добрый день, {{ request.user.first_name|default:request.user.username }}!</span>
-      <a class="btn btn-outline-light btn-sm" href="{% url 'logout' %}">Выход</a>
-    </div>
-  </div>
+    /* --- MAIN NAV --- */
+    nav{
+      background:#fff;
+      border-bottom:1px solid #e0e0e0;
+      display: flex;
+      align-items:center;
+
+      padding:30px 20px;
+      height:56px;
+      gap:32px;
+    }
+    nav a{
+      color:#005baa;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:500;
+      position:relative;
+      padding:6px 0;
+      transition:.25s;
+    }
+    nav a:hover{color:#004080;}
+    /* underline on hover */
+    nav a::after{
+        content:'';
+        position:absolute;
+        bottom:-2px;
+        left:0;
+        width:0;
+        height:2px;
+        background:#005baa;
+        transition:.3s;
+    }
+
+    nav a:hover::after{width:100%;}
+    .bg-wtihe {
+        padding-top: 27px;
+        padding-bottom: 40px
+    }
+
+    .about-section{
+        height: 350px;
+        padding: 100px 250px;
+        background-color: #CFE2FF;
+        display: center;
+
+
+    }
+
+    .itos-in-numbers {
+        height: 300px;
+        padding: 50px 350px;
+        background-color: #132041;
+        display: center;
+
+    }
+    .dark-blue-text {
+        color: #132041;
+    }
+    p.dark-blue-text {
+        line-height: 0.2;
+        font-weight: 700px;
+        font-size: 24px;
+
+    }
+    p.red-text {
+        line-height: 0.2;
+    }
+
+    .dark-blue-info-box {
+
+        padding: 50px 250px;
+        background-color: #132041;
+        display: center;
+        height: 500px;
+    }
+    .stats {
+        height: 400px;
+        width: 1150px;
+        display: center;
+        margin: 0 auto;
+        }
+
+    .description {
+        font-size: 36px;
+        line-height: 0.2;
+        width: 600;
+    }
+
+    .message-box {
+            justify-content: center;
+            background-color: white;
+            border-radius: 10px; /* Скругленные углы */
+            padding: 25px 40px;
+            color: #343a40; /* Цвет текста */
+            display: center;
+            margin: auto auto;
+            line-height: 20px;
+            width: 850px;
+        }
+        .white-text {
+            color: white;
+            font-size: 40px;
+            font-weight: 900px;
+
+        }
+        .red-text {
+            color: #DC3545;
+            font-size: 40px;
+            font-weight: 900px;
+        }
+
+        .info-card-about-itos {
+            border-radius: 10px;
+            background-color: white;
+            width: 274px;
+            height: 130px;
+            padding: 5px 10px;
+            margin: 0 40px;
+            display: inline-block;
+        }
+        .itos-info-white-cards{
+            height: 200px;
+            display: center;
+           }
+        h2.dark-blue-text {
+            font-size: 40px;
+            font-weight: 700px;
+        }
+
+
+  </style>
+</head>
+<body>
+
+<header class="main-header">
+<nav class="top-nav">
+	<div class="header">
+		<a href="/" class="logo-muiv">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+
+	    <a href="/abitur/">Статистика</a>
+
+	    <a href="/studentu/">Часто задаваемые вопросы</a>
+
+	    <a href="/ido/">О программе</a>
+
+	    <a href="/science/">Контакты</a>
+
+</div>
 </nav>
 
-<main class="container py-5">
-  <div class="row">
-    <div class="col-lg-8 mx-auto text-center">
-      <h1 class="mb-3">Добро пожаловать в систему анализа отзывов!</h1>
-      <p class="lead text-muted mb-4">
-        Наша нейросетевая модель уже обработала <strong>35 000</strong> отзывов
-        с точностью <strong>76 %</strong> по тональности.
-      </p>
+
+</header>
+
+<section class="bg-wtihe">
+    <div class="main-homepage">
+      <h1>Технологии обработки естественного языка</h1>
+
+      <a href="/about/nlp/" class="btn-homepage-btn">Подробнее</a>
+      </div>
+          <div class="main-img">
+            <img src="{% static 'img/ai_brain.jpg' %}" alt="Искусственный интеллект">
+          </div>
+
+</section>
+
+<section class="about-section">
+    <div class="message-box">
+        <h2 class="dark-blue-text">Становимся с каждым годом лучше для вас!</h2>
+      <div class="about-itos">
+        <div class="card-about-itos">
+            <p class="description">ИТОС&nbsp;&nbsp;&nbsp;разработан&nbsp;&nbsp;&nbsp;для&nbsp;&nbsp;&nbsp;улучшения&nbsp;&nbsp;&nbsp;качества</p>
+            <p class="description">образования.&nbsp;&nbsp;&nbsp;Нам&nbsp;&nbsp;&nbsp;важна&nbsp;&nbsp;&nbsp;обратная&nbsp;&nbsp;&nbsp;связь</p>
+            <p class="description">от студентов.&nbsp;&nbsp;Каждый&nbsp;отзыв&nbsp;&nbsp;будет проанализирован</p>
+            <p class="description">нейросетью&nbsp;&nbsp;и&nbsp;&nbsp;&nbsp;загружен&nbsp;&nbsp;в&nbsp;&nbsp;&nbsp;базу&nbsp;&nbsp;&nbsp;данных&nbsp;&nbsp;с</p>
+            <p class="description"> индикацией&nbsp;&nbsp;&nbsp;эмоциональности&nbsp;&nbsp;&nbsp;отзыва.</p>
+
+          </div>
+        </div>
+    </div>
+
+    </section>
+<section class="dark-blue-info-box">
+  <div class="stats">
+      <h2 class="white-text">ИТОС в цифрах и фактах</h2>
+    <div class="itos-info-white-cards">
+      <article class="info-card-about-itos">
+        <span class="red-text">2025</span>
+        <p class="dark-blue-text">год разработки</p>
+      </article>
+      <article class="info-card-about-itos">
+        <span class="red-text">512</span>
+        <p class="dark-blue-text">токенов для NLP</p>
+      </article>
+      <article class="info-card-about-itos">
+        <span class="red-text">35 000</span>
+        <p class="dark-blue-text">отзывов для обучения</p>
+
+      </article>
+    </div>
+
+    <div class="itos-info-white-cards">
+      <article class="info-card-about-itos">
+        <span class="red-text">DistilBert</span>
+        <p class="dark-blue-text">модель нейронной сети</p>
+        <p  class="dark-blue-text">для анализа NLP</p>
+      </article>
+      <article class="info-card-about-itos">
+        <span class="red-text">3</span>
+        <p class="dark-blue-text">тональности можно</p>
+        <p class="dark-blue-text">определить в отзывах</p>
+      </article>
+      <article class="info-card-about-itos">
+        <span class="red-text">76 %</span>
+        <p class="dark-blue-text">точность определения</p>
+        <p class="dark-blue-text">тональности</p>
+      </article>
     </div>
   </div>
+</section>
 
-  <!-- Quick-action cards -->
-  <div class="row g-4 mt-3">
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">📊 Статистика</h5>
-          <p class="card-text">Посмотреть текущие метрики и графики.</p>
-          <a href="{% url 'stats' %}" class="btn btn-primary">Перейти</a>
-        </div>
-      </div>
+
+    <div class="footer">
+        <p>© 2025 © МУИВ. Все права защищены.</p>
     </div>
-
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">📝 Отзывы</h5>
-          <p class="card-text">Загрузить новые отзывы для анализа.</p>
-          <a href="{% url 'reviews' %}" class="btn btn-primary">Перейти</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">⚙️ Профиль</h5>
-          <p class="card-text">Изменить e-mail, пароль или аватар.</p>
-          <a href="{% url 'profile' %}" class="btn btn-primary">Перейти</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tbody>
+                {{ form.as_table }}
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" value="Сохранить"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
 <footer class="text-center py-4 text-muted">
-  © 2025 Московский Университет им. Витте
+  © 2025 Московский Университет им. С.Ю. Витте
 </footer>
 {% endblock %}
