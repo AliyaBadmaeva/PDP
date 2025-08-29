@@ -4,42 +4,79 @@
 
 {% block body %}
 
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>ИТОС - Главная</title>
     <style>
     body {
             font-family: Roboto;
             margin: 0;
             padding: 0;
         }
-        .bg-white {
-            display: flex;
-            align-items: center;
-            /*   ---justify-content: space-between; --- */
-            padding: 20px;
-            /* ---background-color: #f8f9fa; --- */
+
+
+        .wrapper {
+            height: 322px;
+            margin: 0 auto;
         }
 
-        .main-homepage .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #6c757d;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
+        .main-content {
+            height: 500px;
+            width: 1150px;
+            display: center;
+            margin: 0 auto;
+
         }
-        .main-img {
-            flex: 1;
-            max-width: 30%;
-            border-radius: 20px;
+        .main-info {
+            width: 500px;
+            height: 300px;
+            position: absolute;
         }
-        .main-img img {
-            width: 100%;
-            height: auto;
+
+        .main-btn {
+            background-color: #4F6A84;
             border-radius: 10px;
+            position: absolute;
+            left: 10px;
+            top: 200px;
+            height: 40px;
+            width: 150px;
         }
+
+        .btn-homepage-btn {
+            display: flex;
+            padding-top: 10px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            justify-content: center;
+        }
+
+
+        .main-img  {
+            border-radius: 20px;
+            height: 322px;
+            width: 429px;
+            float: right;
+            margin: 0 auto;
+            }
+
+            header {
+                display: center;
+                margin: 0 auto;
+                width: 1250px;
+                height: 117px;
+
+                padding-top: 49px;
+            }
+
+
 
     /* --- MAIN NAV --- */
     nav{
@@ -75,12 +112,8 @@
     }
 
     nav a:hover::after{width:100%;}
-    .bg-wtihe {
-        padding-top: 27px;
-        padding-bottom: 40px
-    }
 
-    .about-section{
+    .about-wrapper{
         height: 350px;
         padding: 100px 250px;
         background-color: #CFE2FF;
@@ -109,14 +142,14 @@
         line-height: 0.2;
     }
 
-    .dark-blue-info-box {
+    .dark-blue-wrapper {
 
         padding: 50px 250px;
         background-color: #132041;
         display: center;
         height: 500px;
     }
-    .stats {
+    .stats-content {
         height: 400px;
         width: 1150px;
         display: center;
@@ -129,7 +162,7 @@
         width: 600;
     }
 
-    .message-box {
+    .message-content {
             justify-content: center;
             background-color: white;
             border-radius: 10px; /* Скругленные углы */
@@ -142,13 +175,13 @@
         }
         .white-text {
             color: white;
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 900px;
 
         }
         .red-text {
             color: #DC3545;
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 900px;
         }
 
@@ -165,17 +198,35 @@
             height: 200px;
             display: center;
            }
-        h2.dark-blue-text {
+
+        h1 {
             font-size: 40px;
+        }
+        h2.dark-blue-text {
+            font-size: 38px;
             font-weight: 700px;
+        }
+
+        .menu {
+            margin: 0 30px;
+            font-size: 15px;
+        }
+
+        .footer-wrapper {
+            padding-top: 22px;
+            display: center;
+            margin: 0 auto;
+            width: 1250px;
+            height: 154px;
         }
 
 
   </style>
 </head>
 <body>
-
+<!-- Шапка сайта -->
 <header class="main-header">
+    <div class="header-content">
 <nav class="top-nav">
 	<div class="header">
 		<a href="/" class="logo-muiv">
@@ -183,34 +234,37 @@
 					 alt="МУ им. С.Ю. Витте">
 		</a>
 
-	    <a href="/abitur/">Статистика</a>
+	    <a class="menu" href="/abitur/">Статистика</a>
 
-	    <a href="/studentu/">Часто задаваемые вопросы</a>
+	    <a class="menu" href="/studentu/">Часто задаваемые вопросы</a>
 
-	    <a href="/ido/">О программе</a>
+	    <a class="menu" href="/ido/">О программе</a>
 
-	    <a href="/science/">Контакты</a>
+	    <a class="menu" href="/science/">Контакты</a>
 
 </div>
 </nav>
-
-
+<!-- /Шапка сайта -->
+</div>
 </header>
 
-<section class="bg-wtihe">
-    <div class="main-homepage">
-      <h1>Технологии обработки естественного языка</h1>
-
+<section class="wrapper">
+<!-- <div class="wrapper"> --->
+    <div class="main-content">
+        <div class="main-info">
+      <h1>Технологии обработки <br>естественного языка</h1>
+    <div class="main-btn">
       <a href="/about/nlp/" class="btn-homepage-btn">Подробнее</a>
       </div>
+            </div>
           <div class="main-img">
-            <img src="{% static 'img/ai_brain.jpg' %}" alt="Искусственный интеллект">
+            <img class="main-img" src="{% static 'img/ai_brain.jpg' %}" alt="Искусственный интеллект">
           </div>
-
+</div>
 </section>
 
-<section class="about-section">
-    <div class="message-box">
+<section class="about-wrapper">
+    <div class="message-content">
         <h2 class="dark-blue-text">Становимся с каждым годом лучше для вас!</h2>
       <div class="about-itos">
         <div class="card-about-itos">
@@ -225,8 +279,8 @@
     </div>
 
     </section>
-<section class="dark-blue-info-box">
-  <div class="stats">
+<section class="dark-blue-wrapper">
+  <div class="stats-content">
       <h2 class="white-text">ИТОС в цифрах и фактах</h2>
     <div class="itos-info-white-cards">
       <article class="info-card-about-itos">
@@ -265,23 +319,15 @@
 </section>
 
 
-    <div class="footer">
+    <footer class="footer-wrapper">
+        <div class="footer-content">
+         <a href="/" class="logo-muiv">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
         <p>© 2025 © МУИВ. Все права защищены.</p>
-    </div>
-    <form method="POST">
-        {% csrf_token %}
-        <table>
-            <tbody>
-                {{ form.as_table }}
-                <tr>
-                    <td colspan="2" align="center"><input type="submit" value="Сохранить"></td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+           </div>
+        </footer>
 </body>
 </html>
-<footer class="text-center py-4 text-muted">
-  © 2025 Московский Университет им. С.Ю. Витте
-</footer>
-{% endblock %}
+
