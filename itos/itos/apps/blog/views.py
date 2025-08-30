@@ -36,3 +36,24 @@ class NlpView(TemplateView):
 class EdaView(TemplateView):
     template_name = 'blog/eda.html'
     login_url = '/login/'  # куда отправлять неавторизованных
+
+
+
+class BlogView(LoginRequiredMixin, TemplateView):
+    template_name = 'blog/main.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+
+        if user.role == 'Преподаватель':
+            context['dashboard_link_text'] = 'Статистика'
+            context['dashboard_link_url'] = '/dashboard/statistics/'
+        elif user.role == 'Менеджер':
+            context['dashboard_link_text'] = 'Загрузить отзывы'
+            context['dashboard_link_url'] = '/dashboard/upload_reviews/'
+        elif user.role == 'Студент':
+            context['dashboard_link_text'] = 'Написать отзыв'
+            context['dashboard_link_url'] = '/dashboard/write_review/'
+
+        return context

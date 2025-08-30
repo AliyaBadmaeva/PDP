@@ -1,6 +1,12 @@
+import os
 from pathlib import Path
-import jaydebeapi
 import sys
+from dotenv import load_dotenv
+import jaydebeapi
+
+load_dotenv()
+BASE_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(BASE_DIR / 'apps'))
 
 conn = jaydebeapi.connect(
     "org.postgresql.Driver",
@@ -8,11 +14,14 @@ conn = jaydebeapi.connect(
     ["postgres", "do_j12498!"],
     "postgresql-42.7.7.jar"  # относительный путь к jar
 )
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(BASE_DIR / 'apps'))
 
-ALLOWED_HOSTS = []
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 # редирект на главную после аутентификации
 AUTH_USER_MODEL = 'accounts.User'
@@ -106,3 +115,15 @@ STATICFILES_DIRS = [ BASE_DIR / 'static' ]
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
+}
+
