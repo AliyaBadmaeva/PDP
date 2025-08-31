@@ -25,8 +25,8 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 # редирект на главную после аутентификации
 AUTH_USER_MODEL = 'accounts.User'
-LOGIN_URL = '/login/'                 # куда идти, если не авторизован
-LOGIN_REDIRECT_URL = '/blog/main/'
+LOGIN_URL = '/accounts/login/'   #или '/login/'     # куда идти, если не авторизован
+LOGIN_REDIRECT_URL = '/'
 
 INSTALLED_APPS = [
     "django.contrib.admin",  # чтобы использовать встроенную админку Джанго
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog",
     "accounts",
+    "dashboard",
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,9 @@ TEMPLATES = [
         },
     },
 ]
-
+TEMPLATES[0]['OPTIONS']['context_processors'] += [
+    'blog.context_processors.dashboard_button',
+]
 WSGI_APPLICATION = "itos.wsgi.application"
 
 

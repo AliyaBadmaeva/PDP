@@ -1,8 +1,3 @@
-{% extends 'blog/index.html' %}
-{% load static %}
-{% block title %}ИТОС - Главная{% endblock %}
-
-{% block body %}
 
 {% load static %}
 <!DOCTYPE html>
@@ -233,14 +228,14 @@
 			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
 					 alt="МУ им. С.Ю. Витте">
 		</a>
-
-	    <a class="menu" href="/abitur/">Статистика</a>
-
-	    <a class="menu" href="/studentu/">Часто задаваемые вопросы</a>
-
-	    <a class="menu" href="/ido/">О программе</a>
-
-	    <a class="menu" href="/science/">Контакты</a>
+        {% if dashboard_button %}
+            <a href="{% url dashboard_button.url %}" class="menu">
+                {{ dashboard_button.text }}
+            </a>
+        {% endif %}
+	    <a class="menu" href="/blog/faq/">Часто задаваемые вопросы</a>
+	    <a class="menu" href="/blog/about/">О программе</a>
+	    <a class="menu" href="/blog/contacts/">Контакты</a>
 
 </div>
 </nav>
@@ -254,7 +249,7 @@
         <div class="main-info">
       <h1>Технологии обработки <br>естественного языка</h1>
     <div class="main-btn">
-      <a href="/about/nlp/" class="btn-homepage-btn">Подробнее</a>
+      <a href="/nlp/" class="btn-homepage-btn">Подробнее</a>
       </div>
             </div>
           <div class="main-img">

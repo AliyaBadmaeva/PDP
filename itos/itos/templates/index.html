@@ -12,6 +12,9 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <h2>{{ header }}</h2>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
     <p>{{ message }}</p>
 </body>
 </html>

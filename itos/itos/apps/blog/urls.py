@@ -8,7 +8,7 @@ urlpatterns = [
     path('',          views.MainView.as_view(),   name='main'),
     path('faq/',      views.FaqView.as_view(),   name='faq'),
     path('about/',    views.AboutView.as_view(),   name='about'),
-    path('contact/',  views.ContactView.as_view(), name='contact'),
+    path('contacts/',  views.ContactView.as_view(), name='contacts'),
     path('nlp/', views.NlpView.as_view(), name='nlp'),
     path('eda/', views.EdaView.as_view(), name='eda'),
 ]
