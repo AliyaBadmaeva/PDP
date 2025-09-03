@@ -64,13 +64,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'blog.context_processors.dashboard_button',
             ],
         },
     },
 ]
-TEMPLATES[0]['OPTIONS']['context_processors'] += [
-    'blog.context_processors.dashboard_button',
-]
+
 WSGI_APPLICATION = "itos.wsgi.application"
 
 

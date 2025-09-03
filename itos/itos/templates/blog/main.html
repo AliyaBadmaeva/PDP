@@ -8,7 +8,7 @@
 
     <title>ИТОС - Главная</title>
     <style>
-    body {
+        body {
             font-family: Roboto;
             margin: 0;
             padding: 0;
@@ -117,13 +117,6 @@
 
     }
 
-    .itos-in-numbers {
-        height: 300px;
-        padding: 50px 350px;
-        background-color: #132041;
-        display: center;
-
-    }
     .dark-blue-text {
         color: #132041;
     }
@@ -132,9 +125,6 @@
         font-weight: 700px;
         font-size: 24px;
 
-    }
-    p.red-text {
-        line-height: 0.2;
     }
 
     .dark-blue-wrapper {
@@ -158,26 +148,26 @@
     }
 
     .message-content {
-            justify-content: center;
-            background-color: white;
-            border-radius: 10px; /* Скругленные углы */
-            padding: 25px 40px;
-            color: #343a40; /* Цвет текста */
-            display: center;
-            margin: auto auto;
-            line-height: 20px;
-            width: 850px;
+        justify-content: center;
+        background-color: white;
+        border-radius: 10px; /* Скругленные углы */
+        padding: 25px 40px;
+        color: #343a40; /* Цвет текста */
+        display: center;
+        margin: auto auto;
+        line-height: 20px;
+        width: 850px;
         }
-        .white-text {
-            color: white;
-            font-size: 38px;
-            font-weight: 900px;
+    .white-text {
+        color: white;
+        font-size: 38px;
+        font-weight: 900px;
+        }
 
-        }
-        .red-text {
-            color: #DC3545;
-            font-size: 38px;
-            font-weight: 900px;
+    .red-text {
+        color: #DC3545;
+        font-size: 38px;
+        font-weight: 900px;
         }
 
         .info-card-about-itos {
@@ -208,13 +198,33 @@
         }
 
         .footer-wrapper {
-            padding-top: 22px;
+            padding-top: 10px;
+            display: center;
+            margin: 0 auto 0 auto;
+            width: 1250px;
+        }
+        .footer-content {
             display: center;
             margin: 0 auto;
-            width: 1250px;
-            height: 154px;
+            }
+        .footer {
+            height: 150px;
+            display: center;
+        }
+        .footer-white-cards {
+            height: 100px;
+            padding: 0 10px 0 10px;
+            margin: 0 100px;
+            display: inline-block;
+        }
+        .rights {
+            height: 10px;
+            margin: 0 100px;
         }
 
+        .logo-muiv-footer {
+            padding-bottom: 0;
+        }
 
   </style>
 </head>
@@ -249,7 +259,7 @@
         <div class="main-info">
       <h1>Технологии обработки <br>естественного языка</h1>
     <div class="main-btn">
-      <a href="/nlp/" class="btn-homepage-btn">Подробнее</a>
+      <a href="/blog/nlp/" class="btn-homepage-btn">Подробнее</a>
       </div>
             </div>
           <div class="main-img">
@@ -312,17 +322,26 @@
     </div>
   </div>
 </section>
-
-
     <footer class="footer-wrapper">
         <div class="footer-content">
-         <a href="/" class="logo-muiv">
+            <div class="footer">
+                <div class="footer-white-cards">
+         <a href="/" class="logo-muiv-footer">
 			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
 					 alt="МУ им. С.Ю. Витте">
+		</a></div>
+                <div class="footer-white-cards">
+
+            <a href="/" class="logo-itos">
+			<img src="/static/img/ITOS.ico" width="105" height="154" class="logo-itos"
+					 alt="МУ им. С.Ю. Витте">
 		</a>
-        <p>© 2025 © МУИВ. Все права защищены.</p>
-           </div>
+                    </div>
+                <div class="rights">
+              <p>2025 © МУИВ. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
         </footer>
 </body>
 </html>
-
