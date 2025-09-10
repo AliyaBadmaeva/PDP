@@ -25,7 +25,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 # редирект на главную после аутентификации
 AUTH_USER_MODEL = 'accounts.User'
-LOGIN_URL = '/accounts/login/'   #или '/login/'     # куда идти, если не авторизован
+LOGIN_URL = '/accounts/login/'   # куда идти, если не авторизован
 LOGIN_REDIRECT_URL = '/'
 
 INSTALLED_APPS = [
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "blog",
     "accounts",
     "dashboard",
+    "dl",
 ]
 
 MIDDLEWARE = [

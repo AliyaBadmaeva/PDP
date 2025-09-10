@@ -1,7 +1,10 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
-
+import pandas as pd
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.http import JsonResponse, HttpResponseBadRequest
+from .utils import get_sentiment
+from .models import Review, LearningSubject, User
 
 def login_view(request):
     if request.method == 'POST':
@@ -37,3 +40,4 @@ def role_redirect(request):
 def logout_view(request):
     logout(request)
     return redirect('accounts:login')  # Переход на страницу входа после выхода
+

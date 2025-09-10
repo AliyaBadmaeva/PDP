@@ -29,12 +29,31 @@
     </div>
   </div>
 
+
+  <form id="uploadForm" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="file" required>
+  <button type="submit">Загрузить</button>
+</form>
+
+<script>
+document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const res = await fetch("{% url 'reviews:api_upload' %}", {
+      method: "POST",
+      headers: {'X-CSRFToken': '{{ csrf_token }}'},
+      body: new FormData(e.target)
+  });
+  const data = await res.json();
+  alert(res.ok ? `Добавлено ${data.created}` : `Ошибка: ${data.error}`);
+});
+</script>
   <!-- Quick-action cards -->
   <div class="row g-4 mt-3">
     <div class="col-md-4">
       <div class="card h-100 shadow-sm">
         <div class="card-body">
-          <h5 class="card-title">📊 Статистика</h5>
+          <h5 class="card-title">Статистика</h5>
           <p class="card-text">Посмотреть текущие метрики и графики.</p>
           <a href="{% url 'stats' %}" class="btn btn-primary">Перейти</a>
         </div>
@@ -44,7 +63,7 @@
     <div class="col-md-4">
       <div class="card h-100 shadow-sm">
         <div class="card-body">
-          <h5 class="card-title">📝 Отзывы</h5>
+          <h5 class="card-title">Отзывы</h5>
           <p class="card-text">Загрузить новые отзывы для анализа.</p>
           <a href="{% url 'reviews' %}" class="btn btn-primary">Перейти</a>
         </div>
@@ -54,7 +73,7 @@
     <div class="col-md-4">
       <div class="card h-100 shadow-sm">
         <div class="card-body">
-          <h5 class="card-title">⚙️ Профиль</h5>
+          <h5 class="card-title"> Профиль</h5>
           <p class="card-text">Изменить e-mail, пароль или аватар.</p>
           <a href="{% url 'profile' %}" class="btn btn-primary">Перейти</a>
         </div>
@@ -66,4 +85,3 @@
 <footer class="text-center py-4 text-muted">
   © 2025 Московский Университет им. Витте
 </footer>
-{% endblock %}

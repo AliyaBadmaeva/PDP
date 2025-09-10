@@ -8,7 +8,7 @@ class MainView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        user = self.request.user  # Используйте self.request.user
+        user = self.request.user
         if user.role == 'преподаватель':
             context['dashboard_link_text'] = 'Статистика'
             context['dashboard_link_url'] = '/dashboard/teacher_dashboard/'
@@ -22,11 +22,11 @@ class MainView(LoginRequiredMixin, TemplateView):
 
 class FaqView(LoginRequiredMixin, TemplateView):
     template_name = 'blog/faq.html'
-    login_url = '/accounts/login/'  # куда отправлять неавторизованных
+    login_url = '/accounts/login/'
 
 class ContactView(LoginRequiredMixin, TemplateView):
     template_name = 'blog/contacts.html'
-    login_url = '/accounts/login/'          # куда отправлять неавторизованных
+    login_url = '/accounts/login/'
 class AboutView(LoginRequiredMixin, TemplateView):
     template_name = 'blog/about.html'
     login_url = '/accounts/login/'  # куда отправлять неавторизованных

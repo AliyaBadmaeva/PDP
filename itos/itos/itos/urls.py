@@ -14,6 +14,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     #path('', include('blog.urls')),  # Главная страница блога
     path('dashboard/', include('dashboard.urls')),
+    path("reviews/", include("reviews.urls")),
 ]
 
 
