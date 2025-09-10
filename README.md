@@ -20,40 +20,40 @@
 
 > **Датасеты**
 
-Первоначально для выполнения задачи был выбран датаест с сайта Kaggle, доступный по [ссылке](https://www.kaggle.com/datasets/sarath02003/multiclass-sentiment-analysis/data), однако научный руководитель просил создать модель для русскоязычных данных, поэтому был проведен парсинг отзывов по образовательным курсам с сайта stepik.org, два файла для парсинга доступны в папке research, в ней же есть файл requirements.txt, он содержит библиотеки для парсинга. В папке research два фпайла - один для парсинга ссылок на дисциплины, второй - для парсинга отзывов по ссылкам в первом файле. В папке output внутри директории research содержатся два файла - результаты парсинг, файл stepik_all_reviews_2025-09-07_05-10-59.xlsx содержит русскоязычный датасет. 
+Первоначально для выполнения задачи был выбран датасет с сайта Kaggle, доступный по [ссылке](https://www.kaggle.com/datasets/sarath02003/multiclass-sentiment-analysis/data), однако научный руководитель в своем отзыве попросил создать модель для русскоязычных данных, поэтому был проведен парсинг отзывов по образовательным IТ курсам с сайта [stepik](https://stepik.org/catalog), два файла для парсинга доступны в папке [research](https://github.com/AliyaBadmaeva/PDP/tree/main/research), в ней же есть файл requirements.txt, он содержит библиотеки для парсинга. В папке research два файла - [один для парсинга ссылок на дисциплины](https://github.com/AliyaBadmaeva/PDP/blob/main/research/keyword_and_courses_link_parse.py), второй - [для парсинга отзывов по ссылкам из первого файла](https://github.com/AliyaBadmaeva/PDP/blob/main/research/parser.py). В папке [output](https://github.com/AliyaBadmaeva/PDP/tree/main/research/output) внутри директории research содержатся два файла - результаты парсинга, файл [stepik_all_reviews_2025-09-07_05-10-59.xlsx](https://github.com/AliyaBadmaeva/PDP/blob/main/research/output/stepik_all_reviews_2025-09-07_05-10-59.xlsx) содержит русскоязычный датасет. 
 
-Первый датасет сохранен в репозитории для истории: он представляет собой отзывы на ИТ-товары, девайсы и приложения. Поскольку в нашем случае задача состоит в определении отзывов на ИТ-дисциплины, данный датаест подходит для задачи текстовой классификации. В датасете оесть текст отзыва, оценка - целое число и название оценки - "положительная" -2, "нейтральная" - 1, "отрицательная" - 0. Таким образом, стояла задача мультиклассовой классификации.
-Датасеты подгружены в репозиторий - файлы [train_df.csv](https://github.com/AliyaBadmaeva/PDP/blob/main/train_df.csv), [val_df.csv](https://github.com/AliyaBadmaeva/PDP/blob/main/val_df.csv), [test_df.csv](https://github.com/AliyaBadmaeva/PDP/blob/main/test_df.csv).
+Первый датасет сохранен в репозитории для истории: он представляет собой отзывы на ИТ-товары, девайсы и приложения. Поскольку в нашем случае задача состоит в определении отзывов на ИТ-дисциплины, данный датасет подходил для задачи текстовой классификации. В датасете присуствует текст отзыва, оценка - целое число и название оценки - "positive" -2, "neutral" - 1, "negative" - 0. Таким образом, стояла задача мультиклассовой классификации.
+Первый датасет подгружен в репозиторий файлами: [train_df.csv](https://github.com/AliyaBadmaeva/PDP/blob/main/train_df.csv), [val_df.csv](https://github.com/AliyaBadmaeva/PDP/blob/main/val_df.csv), [test_df.csv](https://github.com/AliyaBadmaeva/PDP/blob/main/test_df.csv).
 Также для истории сохранена работа по первому англоязычному датасету:
 
 > **Разведочный анализ данных по первому датасету**
 
-Был проведен разведочный анализ данных -  файл [Badmaeva_A_A__PDP_EDA.ipynb](https://github.com/AliyaBadmaeva/PDP/blob/main/Badmaeva_A_A__PDP_EDA.ipynb), который подробно не рассматривается в рамках отчета, но при необходимости может быть представлен. 
+Был проведен разведочный анализ данных -  файл [Badmaeva_A_A__PDP_EDA.ipynb](https://github.com/AliyaBadmaeva/PDP/blob/main/Badmaeva_A_A__PDP_EDA.ipynb), который подробно не рассматривается в рамках отчета, но при необходимости может быть представлен.
 
-Поскольку объем файла слишком велик, на Github он иногда не отображается либо полностью, либо не отображаются динамические графики на библиотеке Plotly. Но он доступен по [ссылке](https://colab.research.google.com/drive/1akbXMwquQrnqR2IGcyfeEIuUcMFiMJuq#scrollTo=Ho-VgA2Sl__S) на Google Colab или по [ссылке](https://www.kaggle.com/code/aliyabadmaeva/exploratory-data-analysis-for-text-dataset) на Kaggle.
+Поскольку объем файла слишком велик, на Github он иногда не отображается либо полностью, либо не отображаются динамические графики библиотеки Plotly. Но он доступен по [ссылке](https://colab.research.google.com/drive/1akbXMwquQrnqR2IGcyfeEIuUcMFiMJuq#scrollTo=Ho-VgA2Sl__S) на Google Colab или по [ссылке](https://www.kaggle.com/code/aliyabadmaeva/exploratory-data-analysis-for-text-dataset) на Kaggle.
 Для запуска блокнота достаточно облачных мощностей Google Colab или Kaggle и установки некоторых библиотек, что прописано в блокнотах в коде.
-Надо отметить, что не обязательно объединять все три выборки - тренировочную, тестовую и валидационную в один датасет, но в таком случае размер файла будет еще больше, поэтому причине и было проведено объединение данных для разведочного анализа.
+Надо отметить, что не обязательно объединять все три выборки - тренировочную, тестовую и валидационную в один датасет, но в таком случае размер файла будет еще больше, по этой причине и было проведено объединение данных для разведочного анализа.
 
 > **Определение эмоциональной окраски англоязычных отзывов с помощью BERT по первому датасету**
 
-Анализ эмоциональной окраски англоязычных отзывов представлен в файле [Badmaeva_A_A__PDP.ipynb](https://github.com/AliyaBadmaeva/PDP/blob/main/Badmaeva_A_A__PDP.ipynb). Была проведена предобработка данных для последующего дообучения предобученной модели DistilBert base uncased на новых данных. Для обучения был выбран Trainer с пободранными параметрами. В результате модель определяет эмоциональную окраску с точностью 76%. Лучшая модель сохранена в папку results и доступна по [ссылке](https://drive.google.com/file/d/18YqaEbiJcMpnVolo_usJs24xYzGI4-dg/view?usp=sharing), т.к. объем слишком большой, то не получается его выложить на Github.
+Анализ эмоциональной окраски англоязычных отзывов представлен в файле [Badmaeva_A_A__PDP.ipynb](https://github.com/AliyaBadmaeva/PDP/blob/main/Badmaeva_A_A__PDP.ipynb). Была проведена предобработка данных для последующего дообучения предобученной модели DistilBert base uncased на новых данных. Для обучения был выбран Trainer с пободранными параметрами. В результате модель определяет эмоциональную окраску с точностью 76%. Лучшая модель сохранена в папку results и доступна по [ссылке](https://drive.google.com/file/d/18YqaEbiJcMpnVolo_usJs24xYzGI4-dg/view?usp=sharing), т.к. объем слишком большой, то не получается его выложить на Github из-за ограничений на файлы - не более 50МВ.
 
-Также по [ссылке](https://www.kaggle.com/code/aliyabadmaeva/sentiment-analysis-with-bert-pytorch) доступен блокнот на kaggle. Стоит отметить, что для выполнения дообучения модели требуется на локальном компьютере иметь встроенную видеокарту NVidia, желательно не меньше 3070 RTX. Но если датасет будет больше, то нужна модель выше. На Google Colab недостаточно имеющихся мощностей Тесла, поэтому для ноутубка использовались собственные мощности локального компьютера - в качестве ускорителя видеокарта NVidia 3070 RTX. На kaggle предоставляются сразу две облачные видеокарты Тесла Т100, поэтому в блокноте был увеличен размер выборок в тренировочных аргументах, хотя это существенно не повлияло на результат - показатель точности.
+Также по [ссылке](https://www.kaggle.com/code/aliyabadmaeva/sentiment-analysis-with-bert-pytorch) доступен блокнот на kaggle. Стоит отметить, что для выполнения дообучения модели требуется на локальном компьютере иметь встроенную видеокарту NVidia, желательно не меньше 3070 RTX. Но если датасет будет больше, то нужна модель выше. На Google Colab недостаточно имеющихся мощностей Тесла, поэтому для работы использовались собственные мощности локального компьютера - в качестве ускорителя видеокарта NVidia 3070 RTX. На kaggle предоставляются сразу две облачные видеокарты Тесла Т100, поэтому в блокноте был увеличен размер выборок в тренировочных аргументах, хотя это существенно не повлияло на результат - показатель точности (accuracy).
 
 
-> **Определение эмоциональной окраски русскоязычных отзывов с помощью RuBERT DeepPavlov по датасету, созданному с помощью парсинга с сайта stepik.org**
+> **Определение эмоциональной окраски русскоязычных отзывов с помощью RuBERT DeepPavlov по датасету, созданному с помощью парсинга с сайта stepik**
 
-В файле [requirements.txt](https://github.com/AliyaBadmaeva/PDP/blob/main/requirements.txt) приведены необходимые библиотеке для проведения обучения модели RuBERT от Трансформеров.
+В файле [requirements.txt](https://github.com/AliyaBadmaeva/PDP/blob/main/requirements.txt) приведены необходимые библиотеки для проведения дообучения модели RuBERT от Трансформеров.
 
-Анализ эмоциональной окраски русскоязычных отзывов по образовательным IT-дисциплинам представлен в файле [Badmaeva_AA_RuBert_PDP.ipynb](https://github.com/AliyaBadmaeva/PDP/blob/main/Badmaeva_AA_RuBert_PDP.ipynb), иногда он не отображается, поэтому он также доступен по [ссылке](https://colab.research.google.com/drive/1tCD6YhYxXMu-tU3ltJYzRDGd5bgWsqiU?usp=sharing). Для запуска файла необходимо, чтобы датасет лежал в этой же папке. Была проведена предобработка данных для последующего дообучения предобученной модели RuBert DeepPavlov на новых данных. Для обучения был выбран Trainer с пободранными параметрами. В результате модель определяет эмоциональную окраску с точностью 73-74%. Лучшая модель сохранена в папку ruBert_results и доступна по [ссылке](https://drive.google.com/drive/folders/1Jt38VedhyD4t5KmA_Yk0TuGdVy8GZpQa?usp=sharing), т.к. объем слишком большой, то не получается ее выложить на Github.
+Анализ эмоциональной окраски русскоязычных отзывов по образовательным IT-дисциплинам представлен в файле [Badmaeva_AA_RuBert_PDP.ipynb](https://github.com/AliyaBadmaeva/PDP/blob/main/Badmaeva_AA_RuBert_PDP.ipynb), иногда он не отображается, поэтому он также доступен по [ссылке](https://colab.research.google.com/drive/1tCD6YhYxXMu-tU3ltJYzRDGd5bgWsqiU?usp=sharing), либо его можно скачать в репозитории. Для запуска файла необходимо, чтобы датасет лежал в этой же папке. Была проведена предобработка данных для последующего дообучения предобученной модели RuBert DeepPavlov на новых данных. Для обучения был выбран Trainer с пободранными параметрами. В результате модель определяет эмоциональную окраску с точностью 74%. Лучшая модель сохранена в папку ruBert_results и доступна по [ссылке](https://drive.google.com/drive/folders/1Jt38VedhyD4t5KmA_Yk0TuGdVy8GZpQa?usp=sharing), т.к. объем слишком большой, то не получается ее выложить на Github.
 
 Как и для англоязычной модели потребовалось дообучение на локальном компьютере. Использовались собственные мощности локального компьютера - в качестве ускорителя видеокарта NVidia 3070 RTX. 
 
 
 
-> База данных
+> База данных на PostgreSQL (первая версия)
 
-Для создания интеллектуальной системы на сайте потребовалось спроектировать базу данных на PostgreSQL.
+Для создания интеллектуальной системы на сайте первоначально была спроектирована база данных на PostgreSQL. Код приведен далее.
 
 ```
 -- Создаем БД
@@ -126,6 +126,71 @@ ALTER TABLE key_info ADD CONSTRAINT id_contact_info_idx FOREIGN KEY (id_contact_
 
 SQL-запросы на заполнение данных здесь не приводятся в целях сохранения персональных данных, однако они указаны в отчете.
 
+> База данных на фреймворке Django - PostgreSQL (конечная версия)
+
+```
+-- Создаем БД
+create database itos;
+-- Создаем таблицу Аккаунты пользователей
+CREATE TABLE accounts_user (id SERIAl PRIMARY KEY, username VAR-CHAR(45) NOT NULL UNIQUE, surname VARCHAR(45) NOT NULL, name VARCHAR(45) NOT NULL, patronymic VARCHAR(45), email VARCHAR(45) NOT NULL), password VARCHAR(128) NOT NULL, role varchar(13) NOT NULL CHECK (role IN ('администратор','менеджер','студент','преподаватель')), is_active BOOLEAN NOT NULL DEFAULT TRUE, is_staff BOOLEAN NOT NULL DE-FAULT FALSE, date_joined TIMESTAMP WITH TIME ZONE NOT NULL DE-FAULT NOW());
+```
+
+Password нельзя сделать уникальным, так как это ломает возможность аутентификации в Django-приложениях, так как в таких приложениях пароли хранятся как хэшированне, хэши могут совпасть, только соль может отличаться.
+
+```
+-- Добавим ограничитель в таблицу Аккаунты пользователей 
+ALTER TABLE contact_info ADD CONSTRAINT unique_info_UNIQUE UNIQUE (surname, name, patronymic, email);
+```
+
+Если данные в таблице не будут меняться, то в Django можно объединить таблицы в одну, но поскольку база данных создается для образовательной си-стемы, то возможны изменения предметов – удаление и добавление, так как образовательная структура подразумевает возможность изменений. По этой при-чине решено было создать справочную таблицу в модели БД.
+
+```
+-- Создаем таблицу Профили
+CREATE TABLE IF NOT EXISTS profile (id_profile SERIAl PRIMARY KEY, name_of_profile NOT NULL CHECK (name_of_profile IN ('ИИ и анализ данных', 'Корпоративный ИС', 'Кибербезопасность ЦП', 'Игровая компьютерная индустрия', 'Бизнес-аналитик 1С', 'Цифровой дизайн и веб-разработка')));
+-- Добавим ограничитель в таблицу Профиль
+ALTER TABLE profile ADD CONSTRAINT profile_UNIQUE UNIQUE (name_of_profile);
+-- Создаем таблицу Учебный план
+CREATE TABLE IF NOT EXISTS curriculum (id_curriculum SERIAl PRIMARY KEY, year_of_learning_start SMALLINT NOT NULL, num_of_semesters_of_study SMALLINT NOT NULL, type_of_higher_education NOT NULL CHECK (type_of_higher_education IN ('бакалавриат', 'магистратура', 'специалитет')), profile INT NOT NULL);
+-- Добавим ограничитель в таблицу Учебный план
+ALTER TABLE curriculum ADD CONSTRAINT id_profile_idx FOREIGN KEY (profile) REFERENCES profile (id_profile);
+ALTER TABLE curriculum ADD CONSTRAINT year_num_type_id_profile_UNIQUE UNIQUE (year_of_learning_start, num_of_semesters_of_study, type_of_higher_education, profile);
+-- Создаем таблицу Предметы
+CREATE TABLE IF NOT EXISTS subjects (id_subject SERIAl PRIMARY KEY, name_of_subject NOT NULL CHECK (name_of_subject IN ('Автоматизация решения ОиРЗ в КИС', 'Базы данных', 'Алгоритмизация, программирование', 'Высокоуровневые методы прогр-ния')));
+-- Добавим ограничители в таблицу Предметы
+ALTER TABLE subjects ADD CONSTRAINT name_UNIQUE UNIQUE (name_of_subject);
+-- Создаем таблицу Изученные предметы
+CREATE TABLE IF NOT EXISTS learning_subjects (id_learning_subjects SE-RIAl PRIMARY KEY, subject INT NOT NULL, curriculum INT NOT NULL, se-mester_after_learning SMALLINT NOT NULL);
+--Внешний ключ
+ALTER TABLE learning_subjects ADD CONSTRAINT id_curriculum_idx FOREIGN KEY (curriculum) REFERENCES curriculum (id_curriculum);
+ALTER TABLE learning_subjects ADD CONSTRAINT id_subject_idx FOR-EIGN KEY (subject) REFERENCES subjects (id_subject);
+-- Добавим ограничители в таблицу Изученные предметы
+ALTER TABLE learning_subjects ADD CONSTRAINT curric_semes_id_learning_subjects_UNIQUE UNIQUE (id_subject, id_curriculum, semester_after_learning);
+-- Создаем таблицу Отзывы
+CREATE TABLE IF NOT EXISTS reviews (id_review SERIAl PRIMARY KEY, date_of_loading DATE NOT NULL, user INT NOT NULL, learning_subjects INT NOT NULL, review TEXT CONSTRAINT check_size CHECK (char_length(review) <= 512) NOT NULL, score_of_review FLOAT NULL, name_of_score NOT NULL CHECK (name_of_score IN ('Негативный', 'Нейтральный', 'Положительный'));
+-- Добавим ограничители в таблицу Отзывы
+ALTER TABLE reviews ADD CONSTRAINT id_review_UNIQUE UNIQUE (id_review);
+ALTER TABLE reviews ADD CONSTRAINT review_UNIQUE UNIQUE (review);
+ALTER TABLE reviews ADD CONSTRAINT review_user_subj_UNIQUE UNIQUE (user_id, id_learning_subjects, review);
+ALTER TABLE reviews ADD CONSTRAINT user_id FOREIGN KEY (user) REFERENCES accounts_user (id) ON DELETE RESTRICT ON UPDATE CAS-CADE;
+ALTER TABLE reviews ADD CONSTRAINT id_learning_subjects FOREIGN KEY (learning_subjects) REFERENCES learning_subjects (id_learning_subjects) ON DELETE RESTRICT ON UPDATE CASCADE;
+-- Создаем таблицу Студенческие группы
+CREATE TABLE IF NOT EXISTS student_group (id_student_group SERIAl PRIMARY KEY, id_curriculum INT NOT NULL);
+-- Внешний ключ, касакдное изменение при обновлении и ограничения при удалении
+ALTER TABLE students ADD CONSTRAINT id_student FOREIGN KEY (id_students) REFERENCES accounts_user (id) ON DELETE RESTRICT ON UP-DATE CASCADE;
+-- Создаем таблицу Студенты
+CREATE TABLE IF NOT EXISTS students (id_students SERIAl PRIMARY KEY, id_student_group INT NOT NULL);
+-- Добавим ограничители в таблицу Студенты
+-- Уникальное сочетание 2 полей
+ALTER TABLE students ADD CONSTRAINT id_students_and_groups_UNIQUE UNIQUE (id_students, id_student_group);
+-- Внешний ключ, касакдное изменение при обновлении и ограничения при удалении
+ALTER TABLE students ADD CONSTRAINT id_student_group FOREIGN KEY (id_student_group) REFERENCES student_group (id_student_group) ON DELETE RESTRICT ON UPDATE CASCADE;
+-- Уникальное сочетание 2 полей
+ALTER TABLE student_group ADD CONSTRAINT id_student_groups_and_curric_UNIQUE UNIQUE (id_student_group, id_curriculum);
+-- Добавим ограничитель в таблицу Студенческие группы
+ALTER TABLE student_group ADD CONSTRAINT id_curriculum_idx FOREIGN KEY (id_curriculum) REFERENCES curriculum (id_curriculum) ON DELETE RESTRICT ON UPDATE CASCADE;
+```
+
+
 > Веб-сайт
 
 **Описание веб-ресурса**, в который будет внедрена интеллектуальная система распознавания эмоциональной окраски отзывов студентов по преподаваемым ИТ-дисциплинам в Университете.
@@ -136,11 +201,11 @@ SQL-запросы на заполнение данных здесь не при
 
 * **Вторая страница «Главная»** – приветственная, на которой описывается информация о веб-ресурсе, на ней будет отображено предназначение веб-ресура – определение эмоциональной окраски, какие есть типы пользователей и какие у пользователей возможные действия.
 
-* **Третья страница «Написать отзыв»** – страница написания отзыва студентом, на ней будет краткая памятка по загрузке отзыва – необходимо выбрать доступный и изученный в прошлом семестре предмет и написать отзыв не более 512 символов, дата и код отзыва будут генерироваться системой автоматически. Внизу страницы можно будет увидеть прошлые отзывы с датой и будет отображаться их количество. Мотивация для студента будет описана на странице. Для студента написание отзывов – это возможность после 10 отзывов получить мерч в деканате. Данная страница доступна для студентов и адмиинистратора.
+* **Третья страница «Написать отзыв»** – страница написания отзыва студентом, на ней будет краткая памятка по загрузке отзыва – необходимо выбрать доступный и изученный в прошлом семестре предмет и написать отзыв не более 512 символов, дата и код отзыва будут генерироваться системой автоматически. Внизу страницы можно будет увидеть прошлые отзывы с датой и будет отображаться их количество. Мотивация для студента будет описана на странице. Для студента написание отзывов – это возможность после 10 отзывов получить мерч в деканате. Данная страница доступна для студентов.
 
-* **Четвертая страница «Загрузить отзывы»** - страница для загрузки на сайт отзывов в Excel-формате менеджером, курирующим учебный процесс. Данная страница доступна только администратору и менеджеру. На странице будет памятка о формате загрузки данных. Мотивация для менеджера загружать отзывы – это один из ключевых показателей эффективности.
+* **Четвертая страница «Загрузить отзывы»** - страница для загрузки на сайт отзывов в Excel-формате менеджером, курирующим учебный процесс. Данная страница доступна только менеджеру. На странице будет памятка о формате загрузки данных. Мотивация для менеджера загружать отзывы – это один из ключевых показателей эффективности.
 
-* **Пятая страница «Статистика»** - страница для скачивания отчетов. Можно скачать отчеты с отзывами и проставленной нейросетью оценкой. Данная страница будет доступна администратору и преподавателям. Мотивация для преподавателей – отслеживание эффективности обучения и его качества, может быть использовано для рейтингования преподавателей.
+* **Пятая страница «Статистика»** - страница для скачивания отчетов. Можно скачать отчеты с отзывами и проставленной нейросетью оценкой. Данная страница будет доступна преподавателям. Мотивация для преподавателей – отслеживание эффективности обучения и его качества, может быть использовано для рейтингования преподавателей.
 
 * **Шестая страница «Разведочный анализ данных»**.
 
@@ -163,4 +228,5 @@ SQL-запросы на заполнение данных здесь не при
 [менеджер](https://www.figma.com/proto/daxkWxoC4EoY25nFM9FyMb/Web?node-id=1013-2043&t=D32i2ZSGVqGaeDQ9-1)
 
 Репозиторий будет обновляться по мере подготовки ВКР.
+
 
