@@ -1,0 +1,273 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИТОС - Контакты</title>
+    <style>
+        body {
+            font-family: Roboto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            height: 322px;
+            margin: 0 auto;
+        }
+
+        .program-content {
+            height: 500px;
+            width: 1150px;
+            display: center;
+            margin: 0 auto;
+        }
+        .program-info {
+            width: 550px;
+            height: 300px;
+            position: absolute;
+        }
+
+        header {
+            display: center;
+            margin: 0 auto;
+            width: 1250px;
+            height: 117px;
+            padding-top: 49px;
+            }
+
+    /* --- MAIN NAV --- */
+    nav{
+      background:#fff;
+      border-bottom:1px solid #e0e0e0;
+      display: flex;
+      align-items:center;
+      padding:30px 20px;
+      height:56px;
+      gap:32px;
+    }
+    nav a{
+      color:#005baa;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:500;
+      position:relative;
+      padding:6px 0;
+      transition:.25s;
+    }
+    nav a:hover{color:#004080;}
+    /* underline on hover */
+    nav a::after{
+        content:'';
+        position:absolute;
+        bottom:-2px;
+        left:0;
+        width:0;
+        height:2px;
+        background:#005baa;
+        transition:.3s;
+    }
+
+    nav a:hover::after{width:100%;}
+
+    .about-wrapper{
+        height: 350px;
+        padding: 100px 250px;
+        background-color: #CFE2FF;
+        display: center;
+    }
+
+    .dark-blue-text-contact, .dark-blue-text-contact-second {
+        color: #132041;
+    }
+
+    p.dark-blue-text-contact {
+        line-height: 1.5;
+        font-weight: 600px;
+        font-size: 20px;
+
+    }
+    h2.dark-blue-text-contact, h2.dark-blue-text-contact-second {
+        font-size: 24px;
+        font-weight: 700px;
+    }
+    h2.dark-blue-text-contact-second {
+        line-height: 1.1;
+    }
+
+    h1.dark-blue-text {
+        color: #132041;
+        font-size: 36px;
+        font-weight: 900px;
+        }
+
+
+
+    .menu {
+        margin: 0 30px;
+        font-size: 15px;
+        }
+
+
+    .office-img  {
+        border-radius: 20px;
+        height: 322px;
+        width: 429px;
+        float: right;
+        margin: 0 auto;
+        }
+
+    .breadcrumb {
+        height: 5px;
+        }
+   .dark-blue-wrapper-contact {
+        padding: 50px 250px;
+        background-color: #132041;
+        display: center;
+        height: 450px;
+    }
+    .contact-text-content {
+        height: 400px;
+        width: 1200px;
+        display: center;
+        margin: 0 auto;
+        }
+    .card-about-contact {
+        border-radius: 10px;
+        background-color: white;
+        width: 400px;
+        height: 250px;
+        padding: 10px 20px 0 30px;
+        margin: 100px 70px 0 70px;
+        display: inline-block;
+        }
+
+    .contact-white-cards{
+        display: center;
+        }
+            .footer-wrapper {
+            padding-top: 10px;
+            display: center;
+            margin: 0 auto 0 auto;
+            width: 1250px;
+        }
+        .footer-content {
+            display: center;
+            margin: 0 auto;
+            }
+        .footer {
+            height: 150px;
+            display: center;
+        }
+        .footer-white-cards {
+            height: 100px;
+            padding: 0 10px 0 10px;
+            margin: 0 100px;
+            display: inline-block;
+        }
+        .rights {
+            height: 10px;
+            margin: 0 100px;
+        }
+
+        .logo-muiv-footer {
+            padding-bottom: 0;
+        }
+
+
+  </style>
+</head>
+<body>
+<!-- Шапка сайта -->
+<header class="main-header">
+    <div class="header-content">
+<nav class="top-nav">
+	<div class="header">
+		<a href="/" class="logo-muiv">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+        <a class="menu" href="/">Главная</a>
+        <a class="menu" href="/blog/nlp/">Технологии NLP</a>
+	    {% if dashboard_button %}
+            <a href="{% url dashboard_button.url %}" class="menu">
+                {{ dashboard_button.text }}
+            </a>
+        {% endif %}
+	    <a class="menu" href="/blog/faq/">Часто задаваемые вопросы</a>
+	    <a class="menu" href="/blog/about/">О программе</a>
+
+</div>
+</nav>
+<!-- /Шапка сайта -->
+</div>
+</header>
+
+<section class="wrapper">
+    <div class="program-content">
+        <div class="program-info">
+        <nav class="breadcrumb">
+        <a href="/">Главная</a>
+        <span>&gt;Контакты</span>
+        </nav>
+      <h1 class="dark-blue-text">Ждем Вас в гости на факультете <br>
+          информационных технологий!</h1>
+            </div>
+          <div class="office-img">
+            <img class="office-img" src="{% static 'img/muiv_office.png' %}" alt="Контакты">
+          </div>
+</div>
+</section>
+
+
+<section class="dark-blue-wrapper-contact">
+  <div class="contact-text-content">
+    <div class="contact-white-cards">
+      <article class="card-about-contact">
+        <h2 class="dark-blue-text-contact">ЧОУ ВО “Московский университет<br>
+            им. С.Ю. Витте”</h2>
+        <p class="dark-blue-text-contact">
+            <b>Часы работы:<br>
+                Пн-Чт: 09:30-18:15<br>
+                Пт: 09:30-17:00</b></p>
+      </article>
+      <article class="card-about-contact">
+        <h2 class="dark-blue-text-contact-second">Контакты</h2>
+        <p class="dark-blue-text-contact">
+            <b>115432, Москва, 2-й Кожуховский проезд,<br>
+            д. 12, стр. 1 <br>
+            info@muiv.ru,<br>
+            + 7 499 877 17 05</b></p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+    <footer class="footer-wrapper">
+        <div class="footer-content">
+            <div class="footer">
+                <div class="footer-white-cards">
+         <a href="/" class="logo-muiv-footer">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a></div>
+                <div class="footer-white-cards">
+
+            <a href="/" class="logo-itos">
+			<img src="/static/img/ITOS.ico" width="105" height="154" class="logo-itos"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+                    </div>
+                <div class="rights">
+              <p>2025 © МУИВ. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+        </footer>
+</body>
+</html>
+
+

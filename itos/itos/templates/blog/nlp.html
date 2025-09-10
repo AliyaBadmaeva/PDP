@@ -1,0 +1,431 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИТОС - Технологии NLP</title>
+    <style>
+        body {
+            font-family: Roboto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            height: 322px;
+            margin: 0 auto;
+        }
+
+        .nlp-content {
+            height: 500px;
+            width: 1200px;
+            display: center;
+            margin: 0 auto;
+        }
+        .nlp-info {
+            width: 550px;
+            height: 300px;
+            position: absolute;
+        }
+    .red-text-nlp {
+        color: #DC3545;
+        font-size: 28px;
+        font-weight: 900px;
+        line-height: 0.5;
+        }
+        header {
+            display: center;
+            margin: 0 auto;
+            width: 1250px;
+            height: 117px;
+            padding-top: 49px;
+            }
+
+    /* --- MAIN NAV --- */
+    nav{
+      background:#fff;
+      border-bottom:1px solid #e0e0e0;
+      display: flex;
+      align-items:center;
+      padding:30px 20px;
+      height:56px;
+      gap:32px;
+    }
+    nav a{
+      color:#005baa;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:500;
+      position:relative;
+      padding:6px 0;
+      transition:.25s;
+    }
+    nav a:hover{color:#004080;}
+    /* underline on hover */
+    nav a::after{
+        content:'';
+        position:absolute;
+        bottom:-2px;
+        left:0;
+        width:0;
+        height:2px;
+        background:#005baa;
+        transition:.3s;
+    }
+
+    nav a:hover::after{width:100%;}
+
+
+
+    .dark-blue-text-nlp {
+        color: #132041;
+    }
+
+    p.dark-blue-text-nlp {
+        line-height: 1.5;
+        font-weight: 600px;
+        font-size: 22px;
+
+    }
+    h3.dark-blue-text-nlp{
+        font-size: 30px;
+        font-weight: 700px;
+        line-height: 0.1;
+    }
+
+    h2.dark-blue-text-nlp{
+        font-size: 34px;
+        font-weight: 700px;
+    }
+
+    h1.dark-blue-text {
+        color: #132041;
+        font-size: 36px;
+        font-weight: 900px;
+        }
+
+    .card-about-nlp {
+        border-radius: 10px;
+        background-color: white;
+        width: 400px;
+        height: 320px;
+        padding: 10px 20px 0 30px;
+        margin: 50px 70px 0 10px;
+        display: inline-block;
+        }
+
+    .nlp-white-cards{
+        display: center;
+        height: 400px;
+        }
+
+    .menu {
+        margin: 0 30px;
+        font-size: 15px;
+        }
+
+    .nlp-img  {
+        border-radius: 20px;
+        height: 322px;
+        width: 429px;
+        float: right;
+        margin: 0 auto;
+        }
+
+    .breadcrumb {
+        height: 5px;
+        }
+   .light-blue-wrapper-nlp {
+        padding: 50px 250px;
+        background-color: #CFE2FF;
+        display: center;
+        height: 420px;
+    }
+    .nlp-text-content {
+        height: 400px;
+        width: 1200px;
+        display: center;
+        margin: 0 auto;
+        }
+    .eda-btn {
+        background-color: #D9D9D9;
+        border-radius: 10px;
+        position: absolute;
+        left: 10px;
+        top: 200px;
+        height: 45px;
+        width: 350px;
+        }
+
+    .btn-eda {
+        display: flex;
+        padding-top: 10px;
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+        text-decoration: none;
+        justify-content: center;
+        color: #132041;
+        }
+        .card-grey {
+            border-radius: 10px;
+            background: rgba(217, 217, 217, 0.62);
+            width: 330px;
+            height: 150px;
+            padding: 10px 10px 10px 10px;
+            margin: 0 10px;
+            display: inline-block;
+        }
+        .grey-cards{
+            height: 400px;
+            display: center;
+           }
+        .goals-content {
+            height: 320px;
+            width: 1150px;
+            display: center;
+            margin: 0 auto;
+        }
+        h4.white-text-nlp {
+            color: white;
+            font-size: 24px;
+            font-weight: 700px;
+            line-height: 0.2;
+            padding-left: 95px;
+            }
+        h2.white-text-nlp {
+            color: white;
+            font-size: 34px;
+            font-weight: 700px;
+            line-height: 0.1;
+            padding-left: 80px;
+            }
+        .nlp-content {
+            height: 400px;
+            width: 1200px;
+            display: center;
+            margin: 0 auto;
+        }
+
+
+        .white-cards{
+            color: white;
+            height: 200px;
+            display: center;
+           }
+
+   .dark-blue-wrapper-nlp {
+        padding: 10px 0;
+        background-color: #132041;
+        display: center;
+        height: 500px;
+    }
+    .second-nlp-content {
+        height: 400px;
+        width: 1300px;
+        display: center;
+        margin: 0 auto;
+
+        }
+    .white-card-nlp {
+        border-radius: 10px;
+        background-color: white;
+        width: 400px;
+        height: 250px;
+        padding: 10px 10px 0 30px;
+        margin: 0 90px 0 90px;
+        display: inline-block;
+        }
+
+    .white-cards-ml{
+        display: center;
+        }
+                .footer-wrapper {
+            padding-top: 10px;
+            display: center;
+            margin: 0 auto 0 auto;
+            width: 1250px;
+        }
+        .footer-content {
+            display: center;
+            margin: 0 auto;
+            }
+        .footer {
+            height: 150px;
+            display: center;
+        }
+        .footer-white-cards {
+            height: 100px;
+            padding: 0 10px 0 10px;
+            margin: 0 100px;
+            display: inline-block;
+        }
+        .rights {
+            height: 10px;
+            margin: 0 100px;
+        }
+
+        .logo-muiv-footer {
+            padding-bottom: 0;
+        }
+
+
+  </style>
+</head>
+<body>
+<!-- Шапка сайта -->
+<header class="main-header">
+    <div class="header-content">
+<nav class="top-nav">
+	<div class="header">
+		<a href="/" class="logo-muiv">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+        <a class="menu" href="/">Главная</a>
+	    {% if dashboard_button %}
+            <a href="{% url dashboard_button.url %}" class="menu">
+                {{ dashboard_button.text }}
+            </a>
+        {% endif %}
+	    <a class="menu" href="/blog/faq/">Часто задаваемые вопросы</a>
+	    <a class="menu" href="/blog/about/">О программе</a>
+        <a class="menu" href="/blog/contacts/">Контакты</a>
+
+</div>
+</nav>
+<!-- /Шапка сайта -->
+</div>
+</header>
+
+<section class="wrapper">
+    <div class="nlp-content">
+        <div class="nlp-info">
+        <nav class="breadcrumb">
+        <a href="/">Главная</a>
+        <span>&gt;Технологии NLP</span>
+        </nav>
+      <h1 class="dark-blue-text">Существующие технологии <br>
+          обработки естественного языка</h1>
+                <div class="eda-btn">
+      <a href="/blog/eda/" class="btn-eda">Разведочный анализ данных</a>
+      </div>
+            </div>
+          <div class="nlp-img">
+            <img class="nlp-img" src="{% static 'img/nlp.png' %}" alt="NLP">
+          </div>
+</div>
+</section>
+
+
+<section class="light-blue-wrapper-nlp">
+  <div class="nlp-text-content">
+    <div class="nlp-white-cards">
+      <article class="card-about-nlp">
+        <h3 class="dark-blue-text-nlp">Модели машинного обучения</h3>
+        <p class="dark-blue-text-nlp">
+            <b>К ближайших соседей<br>
+                Метод опорных векторов<br>
+                Деревья решений<br>
+                Метод Байеса<br>
+                Ансамблевые методы обучения:<br>
+                пакетирование, голосование,<br>
+                бустинг, стэкирование</b></p>
+      </article>
+      <article class="card-about-nlp">
+        <h3 class="dark-blue-text-nlp">Модели глубокого обучения</h3>
+        <p class="dark-blue-text-nlp">
+            <b>Рекуррентные нейросети<br>
+                Сети долго-краткосрочной памяти<br>
+                Сети замкнутого рекуррентного блока<br>
+                Двунаправленная сеть долго-<br>
+                краткосрочной памяти<br>
+                Представление двунаправленного<br>
+                кодера от трансформеров (BERT)</b></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="white-wrapper">
+  <div class="goals-content">
+      <h2 class="dark-blue-text-nlp">Задачи обработки естественного языка</h2>
+    <div class="grey-cards">
+      <article class="card-grey">
+        <span class="red-text-nlp"><b>Распознавание речи</b></span>
+        <p class="dark-blue-text-nlp"><b>Перевод устной речи в<br>
+            текстовый формат, перевод с<br>
+            одного языка на другой.</b></p>
+      </article>
+      <article class="card-grey">
+        <span class="red-text-nlp"><b>Генерация текста</b></span>
+        <p class="dark-blue-text-nlp"><b>Создание осмысленных<br>
+             текстов на заданную<br>
+             тематику.</b></p>
+      </article>
+      <article class="card-grey">
+        <span class="red-text-nlp"><b>Семантический анализ</b></span>
+        <p class="dark-blue-text-nlp"><b>Теггирование, распознавание<br>
+             именнованных сущностей,<br>
+             анализ тональности.</b></p>
+
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dark-blue-wrapper-nlp">
+  <div class="second-nlp-content">
+      <h2 class="white-text-nlp">Обработка текста для анализа эмоциональной окраски</h2>
+    <div class="white-cards-ml">
+        <h4 class="white-text-nlp">Модели машинного и глубокого обучения&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Модели глубокого обучения (BERT)</h4>
+      <article class="white-card-nlp">
+        <p class="dark-blue-text-nlp">
+            <b>Токенизация&nbsp;&nbsp;—&nbsp;разбиение&nbsp;текста на<br>
+                отдельные&nbsp;&nbsp;значимые&nbsp;&nbsp;&nbsp;&nbsp;единицы.<br>
+                Удаление&nbsp;&nbsp;&nbsp;стоп-слов.<br>
+                Нормализация&nbsp;&nbsp;&nbsp;слов&nbsp;—&nbsp;представление<br>
+                слова&nbsp;&nbsp;&nbsp;в&nbsp;&nbsp;&nbsp;его&nbsp;начальной форме.<br>
+                Приведение&nbsp;&nbsp;слов&nbsp;к&nbsp;единому регистру.</b></p>
+      </article>
+      <article class="white-card-nlp">
+        <p class="dark-blue-text-nlp">
+            <b>Нормализация&nbsp;&nbsp;&nbsp;текста&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;приведение <br>
+                текста&nbsp;&nbsp;к&nbsp;&nbsp;&nbsp;единой&nbsp;&nbsp;&nbsp;&nbsp;длине.<br>
+                Токенизация&nbsp;&nbsp;&nbsp;&nbsp;текста&nbsp;&nbsp;&nbsp;&nbsp;- <br>
+                разбиение&nbsp;&nbsp;&nbsp;текста&nbsp;&nbsp;&nbsp;&nbsp;на&nbsp;&nbsp;&nbsp;отдельные<br>
+                токены&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;предложения,&nbsp;слова&nbsp;&nbsp;&nbsp;и <br>
+                другие&nbsp;&nbsp;&nbsp;части&nbsp;&nbsp;&nbsp;слова.</b></p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+    <footer class="footer-wrapper">
+        <div class="footer-content">
+            <div class="footer">
+                <div class="footer-white-cards">
+         <a href="/" class="logo-muiv-footer">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a></div>
+                <div class="footer-white-cards">
+
+            <a href="/" class="logo-itos">
+			<img src="/static/img/ITOS.ico" width="105" height="154" class="logo-itos"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+                    </div>
+                <div class="rights">
+              <p>2025 © МУИВ. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+        </footer>
+</body>
+</html>
+
+
+

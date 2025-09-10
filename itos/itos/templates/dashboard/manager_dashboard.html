@@ -1,0 +1,69 @@
+{% extends 'index.html' %}
+{% block title %}Менеджер{% endblock %}
+{% block body %}
+<h1>Личный кабинет менеджера</h1>
+{% endblock %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">
+      <img src="{% static '/static/img/favicon.png' %}" height="28" class="me-2 rounded">
+      МУ им. Витте
+    </a>
+
+    <div class="ms-auto d-flex align-items-center text-light me-3">
+      <span class="me-3">Добрый день, {{ request.user.first_name|default:request.user.username }}!</span>
+      <a class="btn btn-outline-light btn-sm" href="{% url 'logout' %}">Выход</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto text-center">
+      <h1 class="mb-3">Добро пожаловать в систему анализа отзывов!</h1>
+      <p class="lead text-muted mb-4">
+        Наша нейросетевая модель уже обработала <strong>35 000</strong> отзывов
+        с точностью <strong>76 %</strong> по тональности.
+      </p>
+    </div>
+  </div>
+
+  <!-- Quick-action cards -->
+  <div class="row g-4 mt-3">
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">📊 Статистика</h5>
+          <p class="card-text">Посмотреть текущие метрики и графики.</p>
+          <a href="{% url 'stats' %}" class="btn btn-primary">Перейти</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">📝 Отзывы</h5>
+          <p class="card-text">Загрузить новые отзывы для анализа.</p>
+          <a href="{% url 'reviews' %}" class="btn btn-primary">Перейти</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">⚙️ Профиль</h5>
+          <p class="card-text">Изменить e-mail, пароль или аватар.</p>
+          <a href="{% url 'profile' %}" class="btn btn-primary">Перейти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="text-center py-4 text-muted">
+  © 2025 Московский Университет им. Витте
+</footer>
+{% endblock %}

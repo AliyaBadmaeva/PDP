@@ -1,0 +1,340 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИТОС - Часто задаваемые вопросы</title>
+    <style>
+    body {
+            font-family: Roboto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            height: 322px;
+            margin: 0 auto;
+        }
+
+        .faq-content {
+            height: 500px;
+            width: 1150px;
+            display: center;
+            margin: 0 auto;
+        }
+        .faq-info {
+            width: 520px;
+            height: 300px;
+            position: absolute;
+        }
+
+        .faq-logo  {
+            border-radius: 20px;
+            height: 322px;
+            width: 429px;
+            float: right;
+            margin: 0 auto;
+            }
+
+        header {
+            display: center;
+            margin: 0 auto;
+            width: 1250px;
+            height: 117px;
+            padding-top: 49px;
+            }
+
+    /* --- MAIN NAV --- */
+    nav{
+      background:#fff;
+      border-bottom:1px solid #e0e0e0;
+      display: flex;
+      align-items:center;
+      padding:30px 20px;
+      height:56px;
+      gap:32px;
+    }
+    nav a{
+      color:#005baa;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:500;
+      position:relative;
+      padding:6px 0;
+      transition:.25s;
+    }
+    nav a:hover{color:#004080;}
+    /* underline on hover */
+    nav a::after{
+        content:'';
+        position:absolute;
+        bottom:-2px;
+        left:0;
+        width:0;
+        height:2px;
+        background:#005baa;
+        transition:.3s;
+    }
+
+    nav a:hover::after{width:100%;}
+
+    .about-wrapper{
+        height: 350px;
+        padding: 100px 250px;
+        background-color: #CFE2FF;
+        display: center;
+    }
+
+    .dark-blue-text-faq {
+        color: #132041;
+    }
+
+    p.dark-blue-text-faq {
+        line-height: 1.1;
+        font-weight: 600px;
+        font-size: 20px;
+
+    }
+    h2.dark-blue-text-faq {
+        font-size: 24px;
+        font-weight: 700px;
+    }
+
+
+    .yellow-wrapper {
+        padding: 66px 250px 77px 250px;
+        background-color: rgba(255, 193, 7, 0.4);
+        display: center;
+        height: 544px;
+    }
+    .stats-content {
+        height: 400px;
+        width: 1150px;
+        display: center;
+        margin: 0 auto;
+        }
+
+    .white-logo-text {
+        color: white;
+        font-size: 24px;
+        font-weight: 900px;
+        padding: 35px 10px 20px 30px;
+        }
+    h1.red-text {
+        color: #DC3545;
+        font-size: 36px;
+        font-weight: 900px;
+        }
+
+    .card-with-faq {
+        border-radius: 10px;
+        background-color: white;
+        width: 315px;
+        height: 238px;
+        padding: 10px 20px 0 30px;
+        margin: 0 10px 40px 0;
+        display: inline-block;
+        }
+
+        .faq-white-cards{
+            display: center;
+           }
+
+        .menu {
+            margin: 0 30px;
+            font-size: 15px;
+        }
+
+
+        .faq-logo {
+            background-color: #132041;
+            width: 432;
+            height: 322;
+            border-radius: 10px;
+        }
+        .img-faq{
+            padding: 5px 0 0 30px;
+        }
+
+        .breadcrumb {
+            height: 5px;
+        }
+        .faq-text-content {
+            height: 400px;
+            width: 1200px;
+            display: center;
+            margin: 0 auto;
+        }
+                .footer-wrapper {
+            padding-top: 10px;
+            display: center;
+            margin: 0 auto 0 auto;
+            width: 1250px;
+        }
+        .footer-content {
+            display: center;
+            margin: 0 auto;
+            }
+        .footer {
+            height: 150px;
+            display: center;
+        }
+        .footer-white-cards {
+            height: 100px;
+            padding: 0 10px 0 10px;
+            margin: 0 100px;
+            display: inline-block;
+        }
+        .rights {
+            height: 10px;
+            margin: 0 100px;
+        }
+
+        .logo-muiv-footer {
+            padding-bottom: 0;
+        }
+
+
+
+  </style>
+</head>
+<body>
+<!-- Шапка сайта -->
+<header class="main-header">
+    <div class="header-content">
+<nav class="top-nav">
+	<div class="header">
+		<a href="/" class="logo-muiv">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+        <a class="menu" href="/">Главная</a>
+        <a class="menu" href="/blog/nlp/">Технологии NLP</a>
+	    {% if dashboard_button %}
+            <a href="{% url dashboard_button.url %}" class="menu">
+                {{ dashboard_button.text }}
+            </a>
+        {% endif %}
+	    <a class="menu" href="/blog/about/">О программе</a>
+	    <a class="menu" href="/blog/contacts/">Контакты</a>
+
+</div>
+</nav>
+<!-- /Шапка сайта -->
+</div>
+</header>
+
+<section class="wrapper">
+    <div class="faq-content">
+        <div class="faq-info">
+        <nav class="breadcrumb">
+        <a href="/">Главная</a>
+        <span>&gt;Часто задаваемые вопросы</span>
+        </nav>
+      <h1 class="red-text">Здесь можно найти ответы на <br>часто задаваемые вопросы</h1>
+            </div>
+          <div class="faq-logo">
+            <div class="asks-and-questions-logo">
+                <div class="white-logo-text"><b>Все ответы об ИТОС<br>в одном месте!</b></div>
+                <img class="img-faq" src="/static/img/asks_and_answers.png" alt="asks-and-answers-logo">
+
+            </div>
+
+          </div>
+</div>
+</section>
+
+
+<section class="yellow-wrapper">
+  <div class="faq-text-content">
+    <div class="faq-white-cards">
+      <article class="card-with-faq">
+        <h2 class="dark-blue-text-faq">Зачем нужен ИТОС?</h2>
+        <p class="dark-blue-text-faq">
+            <b>ИТОС разработан для улучшения<br>
+            образовательного&nbsp;&nbsp;&nbsp;&nbsp;процесса,<br>
+            выявления&nbsp;&nbsp;&nbsp;&nbsp;учебных<br>
+            дисциплин,&nbsp;&nbsp;&nbsp;&nbsp;нуждающихся<br>
+            в доработке, а&nbsp;&nbsp;также&nbsp;&nbsp;выявления<br>
+            сильных&nbsp;&nbsp;дисциплин.</b></p>
+      </article>
+      <article class="card-with-faq">
+        <h2 class="dark-blue-text-faq">Какая мотивация?</h2>
+        <p class="dark-blue-text-faq"><b>Менеджеры&nbsp;&nbsp;выполняют&nbsp;&nbsp;свой<br>
+            КПЭ, студенты могут получить<br>
+            мерч&nbsp;&nbsp;&nbsp;&nbsp;и&nbsp;&nbsp;&nbsp;&nbsp;качественное<br>
+            образование,&nbsp;&nbsp;&nbsp;преподаватели<br>
+            улучшить&nbsp;&nbsp;&nbsp;образовательный<br>
+            процесс.</b></p>
+      </article>
+      <article class="card-with-faq">
+        <h2 class="dark-blue-text-faq">Что такое NLP?</h2>
+        <p class="dark-blue-text-faq"><b>NLP -&nbsp;&nbsp;задачи&nbsp;&nbsp;по&nbsp;&nbsp;обработке<br>
+            естественного&nbsp;&nbsp;языка.<br>
+            Одной&nbsp;&nbsp;из&nbsp;&nbsp;&nbsp;задач&nbsp;&nbsp;является<br>
+            определение&nbsp;&nbsp;&nbsp;эмоциональной<br>
+            окраски&nbsp;&nbsp;отзывов&nbsp;&nbsp;на&nbsp;&nbsp;большом<br>
+            количестве&nbsp;&nbsp;&nbsp;данных.</b></p>
+
+      </article>
+    </div>
+
+    <div class="faq-white-cards">
+      <article class="card-with-faq">
+        <h2 class="dark-blue-text-faq">Какая нейросеть в ИТОС?</h2>
+        <p  class="dark-blue-text-faq"><b>Модель DistilBert base uncased - <br>
+            это предобученная&nbsp;&nbsp;&nbsp;легковесная<br>
+            модель от Transformers, которая <br>
+            была дополнительно&nbsp;обучена&nbsp;&nbsp;&nbsp;на<br>
+            отзывах&nbsp;&nbsp;&nbsp;об&nbsp;&nbsp;&nbsp;информационных<br>
+            технологиях.</b></p>
+      </article>
+      <article class="card-with-faq">
+        <h2 class="dark-blue-text-faq">Почему именно DistilBert?</h2>
+        <p class="dark-blue-text-faq"><b>DistilBert&nbsp;&nbsp;была&nbsp;&nbsp;обучена на<br>
+            последовательностях слов с<br>
+            огромным корпусом, одной из<br>
+            задач,&nbsp;&nbsp;для&nbsp;&nbsp;которой<br>
+            предназначена&nbsp;&nbsp;DistilBert -<br>
+            классификация&nbsp;&nbsp;текстов.</b></p>
+      </article>
+      <article class="card-with-faq">
+        <h2 class="dark-blue-text-faq">Будет ли визуализация?</h2>
+        <p class="dark-blue-text-faq"><b>Данный раздел находится в<br>
+            проработке, поскольку требует<br>
+            высоких&nbsp;&nbsp;вычислительных<br>
+            мощностей,&nbsp;&nbsp;что&nbsp;&nbsp;влечет за<br>
+            собой&nbsp;&nbsp;&nbsp;&nbsp;необходимость<br>
+            выделения&nbsp;&nbsp;бюджета.</b></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+    <footer class="footer-wrapper">
+        <div class="footer-content">
+            <div class="footer">
+                <div class="footer-white-cards">
+         <a href="/" class="logo-muiv-footer">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a></div>
+                <div class="footer-white-cards">
+
+            <a href="/" class="logo-itos">
+			<img src="/static/img/ITOS.ico" width="105" height="154" class="logo-itos"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+                    </div>
+                <div class="rights">
+              <p>2025 © МУИВ. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+        </footer>
+</body>
+</html>
+
+
