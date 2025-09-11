@@ -1,5 +1,129 @@
-{% extends 'index.html' %}
-{% block title %}Преподаватель{% endblock %}
-{% block body %}
-<h1>Личный кабинет преподавателя</h1>
-{% endblock %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/teacher_dashboard.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет преподавателя</title>
+</head>
+<body>
+<!-- Шапка сайта -->
+<header class="main-header">
+    <div class="header-content">
+<nav class="top-nav">
+	<div class="header">
+		<a href="/" class="logo-muiv">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+        <a class="menu" href="/">Главная</a>
+	    <a class="menu" href="/blog/faq/">Часто задаваемые вопросы</a>
+	    <a class="menu" href="/blog/about/">О программе</a>
+        <a class="menu" href="/blog/contacts/">Контакты</a>
+
+</div>
+</nav>
+<!-- /Шапка сайта -->
+</div>
+</header>
+
+<section class="wrapper">
+    <div class="upload-content">
+        <div class="download-info">
+        <nav class="breadcrumb">
+        <a href="/">Главная</a>
+        <span>&gt;Статистика</span>
+        </nav>
+      <h2 class="red-text" style="color:#DC3545">Здравствуйте, {{ request.user.name }} {{ request.user.patronymic }}!<br>
+        Сегодня хороший день<br>
+        для анализа данных. </h2>
+            </div>
+                    <div class="download-logo">
+            <div class="excel-logo">
+                <div class="dark-blue-logo-text"><b>Выгружайте статистику - <br>
+                    сделаем ИТ-образование<br>
+                    лучше! </b></div>
+                <img class="img-excel" src="/static/img/Excel.png" alt="Excel-logo">
+
+            </div>
+
+          </div>
+</div>
+</section>
+
+
+<section class="grey-wrapper-download">
+  <div class="download-text-content">
+      <h2 class="dark-blue-text-upload">Инструкция по выгрузке отзывов из <br>
+          ИТОС и их практическому применению</h2>
+    <div class="upload-white-cards">
+      <article class="card-about-upload">
+        <p class="dark-blue-text-upload">
+            <b>1. Нажимаете<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;кнопку<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"Скачать<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;отчет".</b></p>
+      </article>
+      <article class="card-about-upload">
+        <p class="dark-blue-text-upload">
+            <b>2. Проводите<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;анализ<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;данных<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;по отзывам.</b></p>
+      </article>
+      <article class="card-about-upload">
+        <p class="dark-blue-text-upload">
+            <b>3. Выявляете<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;предметы<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;для<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;улучшения.</b></p>
+      </article>
+      <article class="card-about-upload">
+        <p class="dark-blue-text-upload">
+            <b>4. Повышаете<br>
+                &nbsp;&nbsp;&nbsp;качество<br>
+                &nbsp;&nbsp;&nbsp;преподавания<br>
+                &nbsp;&nbsp;&nbsp;IT-дисциплин.</b></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dark-wrapper-upload">
+  <div class="button-content">
+    <div class="information-text">
+      <p class="text-info-text">В отчете в Excel содержится следующая<br>
+          информация: код отзыва, текст отзыва,<br>
+          дисциплина, оценка и название оценки</p>
+      </div>
+
+      <div class="download-btn">
+        <a href="/blog/nlp/" class="btn-download-btn red-text">Скачать отчет</a>
+  </div>
+  </div>
+</section>
+
+<footer class="footer-wrapper">
+        <div class="footer-content">
+            <div class="footer">
+                <div class="footer-white-cards">
+         <a href="/" class="logo-muiv-footer">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a></div>
+                <div class="footer-white-cards">
+
+            <a href="/" class="logo-itos">
+			<img src="/static/img/ITOS.ico" width="105" height="154" class="logo-itos"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+                    </div>
+                <div class="rights">
+              <p>©2025 МУИВ. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+        </footer>
+</body>
+</html>
