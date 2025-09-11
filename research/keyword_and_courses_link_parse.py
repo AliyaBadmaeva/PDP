@@ -28,8 +28,6 @@ options.binary_location = r".\Google\Chrome\Application\chrome.exe"
 options.add_argument('--start-maximized')
 driver = webdriver.Chrome(service=service, options=options)
 wait = WebDriverWait(driver, 15)
-
-# функции
 driver.get(CATALOG_URL)
 sleep(3)
 
@@ -49,7 +47,7 @@ def slow_scroll(driver, pixels_per_step=300):
     while True:
         old = driver.execute_script("return window.pageYOffset;")
         driver.execute_script(f"window.scrollBy(0, {pixels_per_step});")
-        sleep(random.randint(4, 6))
+        sleep(random.randint(4, 6))  # используем рандомное засыпание, чтобы не было блокировки
         if driver.execute_script("return window.pageYOffset;") == old:
             break
 
@@ -62,7 +60,7 @@ for url in KEYWORDS:
     sleep(random.randint(5, 8))  # чтобы не сработала блокировка при парсинге
     page = 1
     while True:
-        slow_scroll(driver)  # используем фукцию для скроллинга вниз, так как стр динамическая
+        slow_scroll(driver)  # используем функцию для скроллинга вниз, так как стр динамическая
         cards = driver.find_elements(By.CSS_SELECTOR, ".course-card__title")
         print("Начинаем сбор ID...")
         for card in cards:
