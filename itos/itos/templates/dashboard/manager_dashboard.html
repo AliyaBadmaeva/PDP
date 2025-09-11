@@ -1,87 +1,128 @@
-{% extends 'index.html' %}
-{% block title %}Менеджер{% endblock %}
-{% block body %}
-<h1>Личный кабинет менеджера</h1>
-{% endblock %}
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="#">
-      <img src="{% static '/static/img/favicon.png' %}" height="28" class="me-2 rounded">
-      МУ им. Витте
-    </a>
+<link rel="stylesheet" href="{% static 'css/manager_dashboard.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет менеджера</title>
+</head>
+<body>
 
-    <div class="ms-auto d-flex align-items-center text-light me-3">
-      <span class="me-3">Добрый день, {{ request.user.first_name|default:request.user.username }}!</span>
-      <a class="btn btn-outline-light btn-sm" href="{% url 'logout' %}">Выход</a>
-    </div>
-  </div>
+
+<!-- Шапка сайта -->
+<header class="main-header">
+    <div class="header-content">
+<nav class="top-nav">
+	<div class="header">
+		<a href="/" class="logo-muiv">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+        <a class="menu" href="/">Главная</a>
+	    <a class="menu" href="/blog/faq/">Часто задаваемые вопросы</a>
+	    <a class="menu" href="/blog/about/">О программе</a>
+        <a class="menu" href="/blog/contacts/">Контакты</a>
+
+</div>
 </nav>
+<!-- /Шапка сайта -->
+</div>
+</header>
 
-<main class="container py-5">
-  <div class="row">
-    <div class="col-lg-8 mx-auto text-center">
-      <h1 class="mb-3">Добро пожаловать в систему анализа отзывов!</h1>
-      <p class="lead text-muted mb-4">
-        Наша нейросетевая модель уже обработала <strong>35 000</strong> отзывов
-        с точностью <strong>76 %</strong> по тональности.
-      </p>
+<section class="wrapper">
+    <div class="upload-content">
+        <div class="hello-info">
+        <nav class="breadcrumb">
+        <a href="/">Главная</a>
+        <span>&gt;Загрузить отчет</span>
+        </nav>
+      <h1 class="red-text" style="color:#DC3545">Здравствуйте, {{ request.user.name }} {{ request.user.patronymic }}!<br>
+        Сегодня прекрасный день<br>
+        для загрузки отзывов студентов. </h1>
+            </div>
+                    <div class="upload-logo">
+            <div class="excel-logo">
+                <div class="dark-blue-logo-text"><b>Загрузи отзывы - <br>
+                    сделай МУИВ лучше!</b></div>
+                <img class="img-excel" src="/static/img/Excel.png" alt="Excel-logo">
+
+            </div>
+
+          </div>
+</div>
+</section>
+
+
+<section class="light-blue-wrapper-upload">
+  <div class="upload-text-content">
+      <h2 class="dark-blue-text-upload">Инструкция по загрузке<br>
+          отзывов в ИТОС</h2>
+    <div class="upload-white-cards">
+      <article class="card-about-upload">
+        <p class="dark-blue-text-upload">
+            <b>1. Откройте<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Excel,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;заполните<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;отзывами.</b></p>
+      </article>
+      <article class="card-about-upload">
+        <p class="dark-blue-text-upload">
+            <b>2. Выберите<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;файл<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Excel<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;для загрузки.</b></p>
+      </article>
+      <article class="card-about-upload">
+        <p class="dark-blue-text-upload">
+            <b>3. Нажимаете<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;кнопку<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"Загрузить<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;отчет".</b></p>
+      </article>
+      <article class="card-about-upload">
+        <p class="dark-blue-text-upload">
+            <b>4. Повышаете<br>
+                &nbsp;&nbsp;&nbsp;свой КПЭ<br>
+                &nbsp;&nbsp;&nbsp;за загрузку<br>
+                &nbsp;&nbsp;&nbsp;отзывов.</b></p>
+      </article>
     </div>
   </div>
+</section>
 
-
-  <form id="uploadForm" enctype="multipart/form-data">
-  {% csrf_token %}
-  <input type="file" name="file" required>
-  <button type="submit">Загрузить</button>
-</form>
-
-<script>
-document.getElementById('uploadForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const res = await fetch("{% url 'reviews:api_upload' %}", {
-      method: "POST",
-      headers: {'X-CSRFToken': '{{ csrf_token }}'},
-      body: new FormData(e.target)
-  });
-  const data = await res.json();
-  alert(res.ok ? `Добавлено ${data.created}` : `Ошибка: ${data.error}`);
-});
-</script>
-  <!-- Quick-action cards -->
-  <div class="row g-4 mt-3">
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Статистика</h5>
-          <p class="card-text">Посмотреть текущие метрики и графики.</p>
-          <a href="{% url 'stats' %}" class="btn btn-primary">Перейти</a>
-        </div>
+<section class="dark-wrapper-upload">
+  <div class="button-content">
+    <div class="upload-btn">
+      <a href="/blog/nlp/" class="btn-upload-btn">Выберите Excel для загрузки</a>
       </div>
-    </div>
 
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Отзывы</h5>
-          <p class="card-text">Загрузить новые отзывы для анализа.</p>
-          <a href="{% url 'reviews' %}" class="btn btn-primary">Перейти</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title"> Профиль</h5>
-          <p class="card-text">Изменить e-mail, пароль или аватар.</p>
-          <a href="{% url 'profile' %}" class="btn btn-primary">Перейти</a>
-        </div>
-      </div>
-    </div>
+      <div class="upload-btn">
+        <a href="/blog/nlp/" class="btn-upload-btn">Загрузить отчет</a>
   </div>
-</main>
+  </div>
+</section>
 
-<footer class="text-center py-4 text-muted">
-  © 2025 Московский Университет им. Витте
-</footer>
+<footer class="footer-wrapper">
+        <div class="footer-content">
+            <div class="footer">
+                <div class="footer-white-cards">
+         <a href="/" class="logo-muiv-footer">
+			<img src="/static/img/favicon.png" width="240" height="105" class="logo-muiv--full"
+					 alt="МУ им. С.Ю. Витте">
+		</a></div>
+                <div class="footer-white-cards">
+
+            <a href="/" class="logo-itos">
+			<img src="/static/img/ITOS.ico" width="105" height="154" class="logo-itos"
+					 alt="МУ им. С.Ю. Витте">
+		</a>
+                    </div>
+                <div class="rights">
+              <p>©2025 МУИВ. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+        </footer>
+</body>
+</html>
