@@ -16,10 +16,10 @@ print('Сейчас ', date)
 # Запуск браузера
 service = Service(executable_path=CHROMEDRIVER_PATH)
 options = webdriver.ChromeOptions()
-options.binary_location = r"C:\Users\alius\PDP\research\Google\Chrome\Application\chrome.exe"
+options.binary_location = r".\Google\Chrome\Application\chrome.exe"
 options.add_argument('--start-maximized')
 options.add_argument('--start-fullscreen')
-IDS_FILE = os.path.join(OUTPUT_DIR, 'stepik_all_ids_2025-09-07_14-34-24.xlsx')
+IDS_FILE = os.path.join(OUTPUT_DIR, 'stepik_all_ids_2025-09-06_04-25-02.xlsx')
 course_ids = pd.read_excel(IDS_FILE, engine='openpyxl')['ID курса'].dropna().astype(int).tolist()
 print(f'Загружено {len(course_ids)} ID курсов из {IDS_FILE}')
 driver = webdriver.Chrome(service=service, options=options)
