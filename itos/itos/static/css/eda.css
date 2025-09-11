@@ -1,0 +1,192 @@
+        body {
+            font-family: Roboto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            height: 322px;
+            margin: 0 auto;
+        }
+
+        .eda-content {
+            height: 480px;
+            width: 1200px;
+            display: center;
+            margin: 0 auto;
+        }
+        .eda-info {
+            width: 550px;
+            height: 300px;
+            position: absolute;
+        }
+        header {
+            display: center;
+            margin: 0 auto;
+            width: 1250px;
+            height: 117px;
+            padding-top: 49px;
+            }
+
+    /* --- MAIN NAV --- */
+    nav{
+      background:#fff;
+      border-bottom:1px solid #e0e0e0;
+      display: flex;
+      align-items:center;
+      padding:30px 20px;
+      height:56px;
+      gap:32px;
+    }
+    nav a{
+      color:#005baa;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:500;
+      position:relative;
+      padding:6px 0;
+      transition:.25s;
+    }
+    nav a:hover{color:#004080;}
+    /* underline on hover */
+    nav a::after{
+        content:'';
+        position:absolute;
+        bottom:-2px;
+        left:0;
+        width:0;
+        height:2px;
+        background:#005baa;
+        transition:.3s;
+    }
+
+    nav a:hover::after{width:100%;}
+
+    .yellow-wrapper-eda {
+        padding: 5px 200px 20px 200px;
+        background-color: rgba(255, 193, 7, 0.4);
+        display: center;
+        height: 634px;
+    }
+        .dark-wrapper-eda {
+        padding: 5px 200px 20px 200px;
+        background-color: #132041;
+        display: center;
+        height: 634px;
+    }
+
+    .dark-blue-text-eda {
+        color: #132041;
+    }
+
+    p.dark-blue-text-eda {
+        line-height: 1;
+        font-weight: 600px;
+        font-size: 22px;
+
+    }
+    h3.dark-blue-text-eda{
+        font-size: 26px;
+        font-weight: 700px;
+        line-height: 1;
+    }
+
+    h2.dark-blue-text-eda, h2.white-text-eda{
+        font-size: 34px;
+        font-weight: 700px;
+    }
+    .white-text-eda {
+        color: white;
+    }
+
+    h1.dark-blue-text {
+        color: #132041;
+        font-size: 36px;
+        font-weight: 900px;
+        }
+
+    .card-about-eda {
+        border-radius: 10px;
+        background-color: white;
+        width: 450px;
+        height: 210px;
+        padding: 10px 20px 0 30px;
+        margin: 10px 70px 30px 10px;
+        display: inline-block;
+        }
+
+    .menu {
+        margin: 0 30px;
+        font-size: 15px;
+        }
+
+
+    .eda-img  {
+        border-radius: 10px;
+        height: 277px;
+        width: 480px;
+        float: right;
+        margin: 0 30px 20px 40px;
+
+        }
+    .photo {
+        height: 322px;
+        }
+
+    .breadcrumb {
+        height: 5px;
+        }
+
+    .eda-text-content {
+        height: 400px;
+        width: 1200px;
+        display: center;
+        margin: 0 auto;
+        }
+
+
+   .light-blue-wrapper-eda {
+        padding: 10px 0;
+        background-color: #CFE2FF;
+        display: center;
+        height: 700px;
+    }
+
+
+    .eda-viz-imgs{
+        display: center;
+        }
+    .eda-viz-content {
+
+        width: 1100px;
+        display: center;
+        margin: 0 auto;
+    }
+            .footer-wrapper {
+            padding-top: 10px;
+            display: center;
+            margin: 0 auto 0 auto;
+            width: 1250px;
+        }
+        .footer-content {
+            display: center;
+            margin: 0 auto;
+            }
+        .footer {
+            height: 150px;
+            display: center;
+        }
+        .footer-white-cards {
+            height: 100px;
+            padding: 0 10px 0 10px;
+            margin: 0 100px;
+            display: inline-block;
+        }
+        .rights {
+            height: 10px;
+            margin: 0 100px;
+        }
+
+        .logo-muiv-footer {
+            padding-bottom: 0;
+        }

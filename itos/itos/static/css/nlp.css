@@ -1,0 +1,258 @@
+        body {
+            font-family: Roboto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            height: 322px;
+            margin: 0 auto;
+        }
+
+
+        .nlp-info {
+            width: 550px;
+            height: 300px;
+            position: absolute;
+        }
+    .red-text-nlp {
+        color: #DC3545;
+        font-size: 28px;
+        font-weight: 900px;
+        line-height: 0.5;
+        }
+        header {
+            display: center;
+            margin: 0 auto;
+            width: 1250px;
+            height: 117px;
+            padding-top: 49px;
+            }
+
+    /* --- MAIN NAV --- */
+    nav{
+      background:#fff;
+      border-bottom:1px solid #e0e0e0;
+      display: flex;
+      align-items:center;
+      padding:30px 20px;
+      height:56px;
+      gap:32px;
+    }
+    nav a{
+      color:#005baa;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:500;
+      position:relative;
+      padding:6px 0;
+      transition:.25s;
+    }
+    nav a:hover{color:#004080;}
+    /* underline on hover */
+    nav a::after{
+        content:'';
+        position:absolute;
+        bottom:-2px;
+        left:0;
+        width:0;
+        height:2px;
+        background:#005baa;
+        transition:.3s;
+    }
+
+    nav a:hover::after{width:100%;}
+
+
+
+    .dark-blue-text-nlp {
+        color: #132041;
+    }
+
+    p.dark-blue-text-nlp {
+        line-height: 1.5;
+        font-weight: 600px;
+        font-size: 22px;
+
+    }
+    h3.dark-blue-text-nlp{
+        font-size: 30px;
+        font-weight: 700px;
+        line-height: 0.1;
+    }
+
+    h2.dark-blue-text-nlp{
+        font-size: 34px;
+        font-weight: 700px;
+    }
+
+    h1.dark-blue-text {
+        color: #132041;
+        font-size: 36px;
+        font-weight: 900px;
+        }
+
+    .card-about-nlp {
+        border-radius: 10px;
+        background-color: white;
+        width: 400px;
+        height: 320px;
+        padding: 10px 20px 0 30px;
+        margin: 50px 70px 0 10px;
+        display: inline-block;
+        }
+
+    .nlp-white-cards{
+        display: center;
+        height: 400px;
+        }
+
+    .menu {
+        margin: 0 30px;
+        font-size: 15px;
+        }
+
+    .nlp-img  {
+        border-radius: 20px;
+        height: 322px;
+        width: 429px;
+        float: right;
+        margin: 0 auto;
+        }
+
+    .breadcrumb {
+        height: 5px;
+        }
+   .light-blue-wrapper-nlp {
+        padding: 50px 250px;
+        background-color: #CFE2FF;
+        display: center;
+        height: 420px;
+    }
+    .nlp-text-content {
+        height: 400px;
+        width: 1200px;
+        display: center;
+        margin: 0 auto;
+        }
+    .eda-btn {
+        background-color: #D9D9D9;
+        border-radius: 10px;
+        position: absolute;
+        left: 10px;
+        top: 200px;
+        height: 45px;
+        width: 350px;
+        }
+
+    .btn-eda {
+        display: flex;
+        padding-top: 10px;
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+        text-decoration: none;
+        justify-content: center;
+        color: #132041;
+        }
+        .card-grey {
+            border-radius: 10px;
+            background: rgba(217, 217, 217, 0.62);
+            width: 330px;
+            height: 150px;
+            padding: 10px 10px 10px 10px;
+            margin: 0 10px;
+            display: inline-block;
+        }
+        .grey-cards{
+            height: 400px;
+            display: center;
+           }
+        .goals-content {
+            height: 320px;
+            width: 1150px;
+            display: center;
+            margin: 0 auto;
+        }
+        h4.white-text-nlp {
+            color: white;
+            font-size: 24px;
+            font-weight: 700px;
+            line-height: 0.2;
+            padding-left: 95px;
+            }
+        h2.white-text-nlp {
+            color: white;
+            font-size: 34px;
+            font-weight: 700px;
+            line-height: 0.1;
+            padding-left: 80px;
+            }
+        .nlp-content {
+            height: 400px;
+            width: 1200px;
+            display: center;
+            margin: 0 auto;
+        }
+
+
+        .white-cards{
+            color: white;
+            height: 200px;
+            display: center;
+           }
+
+   .dark-blue-wrapper-nlp {
+        padding: 10px 0;
+        background-color: #132041;
+        display: center;
+        height: 500px;
+    }
+    .second-nlp-content {
+        height: 400px;
+        width: 1300px;
+        display: center;
+        margin: 0 auto;
+
+        }
+    .white-card-nlp {
+        border-radius: 10px;
+        background-color: white;
+        width: 400px;
+        height: 250px;
+        padding: 10px 10px 0 30px;
+        margin: 0 90px 0 90px;
+        display: inline-block;
+        }
+
+    .white-cards-ml{
+        display: center;
+        }
+                .footer-wrapper {
+            padding-top: 10px;
+            display: center;
+            margin: 0 auto 0 auto;
+            width: 1250px;
+        }
+        .footer-content {
+            display: center;
+            margin: 0 auto;
+            }
+        .footer {
+            height: 150px;
+            display: center;
+        }
+        .footer-white-cards {
+            height: 100px;
+            padding: 0 10px 0 10px;
+            margin: 0 100px;
+            display: inline-block;
+        }
+        .rights {
+            height: 10px;
+            margin: 0 100px;
+        }
+
+        .logo-muiv-footer {
+            padding-bottom: 0;
+        }
