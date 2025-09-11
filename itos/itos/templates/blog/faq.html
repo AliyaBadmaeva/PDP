@@ -1,203 +1,12 @@
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/faq.css' %}">
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ИТОС - Часто задаваемые вопросы</title>
-    <style>
-    body {
-            font-family: Roboto;
-            margin: 0;
-            padding: 0;
-        }
 
-        .wrapper {
-            height: 322px;
-            margin: 0 auto;
-        }
-
-        .faq-content {
-            height: 500px;
-            width: 1150px;
-            display: center;
-            margin: 0 auto;
-        }
-        .faq-info {
-            width: 520px;
-            height: 300px;
-            position: absolute;
-        }
-
-        .faq-logo  {
-            border-radius: 20px;
-            height: 322px;
-            width: 429px;
-            float: right;
-            margin: 0 auto;
-            }
-
-        header {
-            display: center;
-            margin: 0 auto;
-            width: 1250px;
-            height: 117px;
-            padding-top: 49px;
-            }
-
-    /* --- MAIN NAV --- */
-    nav{
-      background:#fff;
-      border-bottom:1px solid #e0e0e0;
-      display: flex;
-      align-items:center;
-      padding:30px 20px;
-      height:56px;
-      gap:32px;
-    }
-    nav a{
-      color:#005baa;
-      text-decoration:none;
-      font-size:15px;
-      font-weight:500;
-      position:relative;
-      padding:6px 0;
-      transition:.25s;
-    }
-    nav a:hover{color:#004080;}
-    /* underline on hover */
-    nav a::after{
-        content:'';
-        position:absolute;
-        bottom:-2px;
-        left:0;
-        width:0;
-        height:2px;
-        background:#005baa;
-        transition:.3s;
-    }
-
-    nav a:hover::after{width:100%;}
-
-    .about-wrapper{
-        height: 350px;
-        padding: 100px 250px;
-        background-color: #CFE2FF;
-        display: center;
-    }
-
-    .dark-blue-text-faq {
-        color: #132041;
-    }
-
-    p.dark-blue-text-faq {
-        line-height: 1.1;
-        font-weight: 600px;
-        font-size: 20px;
-
-    }
-    h2.dark-blue-text-faq {
-        font-size: 24px;
-        font-weight: 700px;
-    }
-
-
-    .yellow-wrapper {
-        padding: 66px 250px 77px 250px;
-        background-color: rgba(255, 193, 7, 0.4);
-        display: center;
-        height: 544px;
-    }
-    .stats-content {
-        height: 400px;
-        width: 1150px;
-        display: center;
-        margin: 0 auto;
-        }
-
-    .white-logo-text {
-        color: white;
-        font-size: 24px;
-        font-weight: 900px;
-        padding: 35px 10px 20px 30px;
-        }
-    h1.red-text {
-        color: #DC3545;
-        font-size: 36px;
-        font-weight: 900px;
-        }
-
-    .card-with-faq {
-        border-radius: 10px;
-        background-color: white;
-        width: 315px;
-        height: 238px;
-        padding: 10px 20px 0 30px;
-        margin: 0 10px 40px 0;
-        display: inline-block;
-        }
-
-        .faq-white-cards{
-            display: center;
-           }
-
-        .menu {
-            margin: 0 30px;
-            font-size: 15px;
-        }
-
-
-        .faq-logo {
-            background-color: #132041;
-            width: 432;
-            height: 322;
-            border-radius: 10px;
-        }
-        .img-faq{
-            padding: 5px 0 0 30px;
-        }
-
-        .breadcrumb {
-            height: 5px;
-        }
-        .faq-text-content {
-            height: 400px;
-            width: 1200px;
-            display: center;
-            margin: 0 auto;
-        }
-                .footer-wrapper {
-            padding-top: 10px;
-            display: center;
-            margin: 0 auto 0 auto;
-            width: 1250px;
-        }
-        .footer-content {
-            display: center;
-            margin: 0 auto;
-            }
-        .footer {
-            height: 150px;
-            display: center;
-        }
-        .footer-white-cards {
-            height: 100px;
-            padding: 0 10px 0 10px;
-            margin: 0 100px;
-            display: inline-block;
-        }
-        .rights {
-            height: 10px;
-            margin: 0 100px;
-        }
-
-        .logo-muiv-footer {
-            padding-bottom: 0;
-        }
-
-
-
-  </style>
 </head>
 <body>
 <!-- Шапка сайта -->
@@ -284,15 +93,15 @@
       <article class="card-with-faq">
         <h2 class="dark-blue-text-faq">Какая нейросеть в ИТОС?</h2>
         <p  class="dark-blue-text-faq"><b>Модель RuBert DeepPavlov - <br>
-            это предобученная&nbsp;&nbsp;&nbsp;легковесная<br>
-            модель от Transformers, которая <br>
+            это предобученная&nbsp;&nbsp;модель&nbsp;<br>
+            от Transformers, которая <br>
             была дополнительно&nbsp;обучена&nbsp;&nbsp;&nbsp;на<br>
             отзывах&nbsp;&nbsp;&nbsp;об&nbsp;&nbsp;&nbsp;информационных<br>
             технологиях.</b></p>
       </article>
       <article class="card-with-faq">
         <h2 class="dark-blue-text-faq">Почему именно RuBert?</h2>
-        <p class="dark-blue-text-faq"><b>DistilBert&nbsp;&nbsp;была&nbsp;&nbsp;обучена на<br>
+        <p class="dark-blue-text-faq"><b>RuBert&nbsp;&nbsp;была&nbsp;&nbsp;обучена на<br>
             последовательностях слов с<br>
             огромным корпусом, одной из<br>
             задач,&nbsp;&nbsp;для&nbsp;&nbsp;которой<br>
