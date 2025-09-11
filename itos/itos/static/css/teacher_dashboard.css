@@ -1,0 +1,229 @@
+    body {
+            font-family: Roboto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            height: 322px;
+            margin: 0 auto;
+        }
+
+
+        header {
+            display: center;
+            margin: 0 auto;
+            width: 1250px;
+            height: 117px;
+            padding-top: 49px;
+            }
+
+    /* --- MAIN NAV --- */
+    nav{
+      background:#fff;
+      border-bottom:1px solid #e0e0e0;
+      display: flex;
+      align-items:center;
+      padding:30px 20px;
+      height:56px;
+      gap:32px;
+    }
+    nav a{
+      color:#005baa;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:500;
+      position:relative;
+      padding:6px 0;
+      transition:.25s;
+    }
+    nav a:hover{color:#004080;}
+    /* underline on hover */
+    nav a::after{
+        content:'';
+        position:absolute;
+        bottom:-2px;
+        left:0;
+        width:0;
+        height:2px;
+        background:#005baa;
+        transition:.3s;
+    }
+
+    nav a:hover::after{width:100%;}
+
+
+     .download-logo {
+        background-color: rgba(255, 193, 7, 0.2);
+        border-radius: 10px;
+        height: 322px;
+        width: 432px;
+        float: right;
+        margin: 0 auto;
+            }
+
+
+    h1.red-text{
+        font-size: 36px;
+        font-weight: 900px;
+        }
+
+    .upload-white-cards{
+        display: center;
+        }
+
+    .menu {
+        margin: 0 30px;
+        font-size: 15px;
+        }
+
+
+    .breadcrumb {
+        height: 5px;
+        }
+
+        .footer-wrapper {
+            padding-top: 10px;
+            display: center;
+            margin: 0 auto 0 auto;
+            width: 1250px;
+        }
+        .footer-content {
+            display: center;
+            margin: 0 auto;
+            }
+        .footer {
+            height: 150px;
+            display: center;
+        }
+        .footer-white-cards {
+            height: 100px;
+            padding: 0 10px 0 10px;
+            margin: 0 100px;
+            display: inline-block;
+        }
+        .rights {
+            height: 10px;
+            margin: 0 100px;
+        }
+
+        .logo-muiv-footer {
+            padding-bottom: 0;
+        }
+        .dark-blue-logo-text {
+            color: #132041;
+            font-size: 24px;
+            font-weight: 900px;
+            padding: 35px 10px 20px 30px;
+        }
+        .img-excel{
+            padding: 100px 0 0 30px;
+            width: 234;
+            height: 84;
+        }
+    .dark-blue-text-upload, a.btn-upload-btn {
+        color: #132041;
+    }
+    a.btn-upload-btn {
+        text-decoration: none;
+    }
+
+    h2.dark-blue-text-upload{
+        font-size: 36px;
+        font-weight: 700px;
+        line-height: 1;
+    }
+    p.dark-blue-text-upload, a.btn-upload-btn {
+        line-height: 1;
+        font-weight: 600px;
+        font-size: 32px;
+
+
+    }
+    .card-about-upload {
+        border-radius: 10px;
+        background-color: white;
+        width: 250px;
+        height: 166px;
+        padding: 0 5px 10px 20px;
+        margin: 10px 10px 20px 10px;
+        display: inline-block;
+        }
+    .grey-wrapper-download {
+        padding: 5px 200px 20px 200px;
+        background-color: #D9D9D9;
+        display: center;
+        height: 534px;
+    }
+        .download-text-content {
+        height: 500px;
+        width: 1200px;
+        display: center;
+        margin: 0 auto;
+        padding-top: 90px;
+        }
+    .dark-wrapper-upload {
+        padding: 5px 350px 20px 350px;
+        background-color: #132041;
+        display: center;
+        height: 455px;
+    }
+
+
+    .download-btn{
+            background-color: white;
+            border-radius: 10px;
+            display: center;
+            height: 68px;
+            width: 498px;
+            text-align: center;
+            padding-top: 20px;
+            margin: 67px auto 40px auto;
+
+}
+    .information-text{
+            background-color: white;
+            border-radius: 10px;
+            display: center;
+            height: 160px;
+            width: 857px;
+            text-align: center;
+            padding-top: 1px;
+            margin: 67px auto 40px auto;
+
+}
+
+
+
+    .red-text {
+        color: #DC3545;
+        font-size: 32px;
+        text-decoration:none;
+        }
+                .upload-content {
+            height: 400px;
+            width: 1200px;
+            display: center;
+            margin: 0 auto;
+        }
+        .download-info {
+
+            width: 550px;
+            height: 300px;
+            position: absolute;
+        }
+        .button-content {
+        height: 400px;
+        width: 1200px;
+        display: center;
+        margin: 0 auto;
+        }
+
+        .text-info-text {
+            color: #132041;
+            font-size: 36px;
+            text-decoration:none;
+            font-weight: 900px;
+            line-height: 1;
+
+        }
