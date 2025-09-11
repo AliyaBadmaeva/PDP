@@ -6,8 +6,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-
-
 import random
 
 CHROMEDRIVER_PATH = r'./webdriver/chromedriver.exe'
@@ -30,13 +28,15 @@ wait = WebDriverWait(driver, 10)
 data = []
 
 sleep(5)
+
+
 def parse_course(course_id):
     url = f"https://stepik.org/course/{course_id}/reviews"
     print(f"Начинаем парсинг: {url}")
     driver.get(url)
     sleep(5)
 
-    unique_reviews = set()
+    unique_reviews = set()  # создаем множество
     same_count = 0
 
     def scroll_to_last_review():
@@ -61,22 +61,21 @@ def parse_course(course_id):
 
         print(f"Обработано отзывов: {len(unique_reviews)}")
 
-
         for card in cards:
             review_id = card.get_attribute("data-review-id")
             if not review_id or review_id in unique_reviews:
                 continue
             unique_reviews.add(review_id)
-
+            # изем количество звезд по селектору
             colored_stars = card.find_elements(By.CSS_SELECTOR, ".colored-star")
-            stars_count = len(colored_stars)
+            stars_count = len(colored_stars)  # определеяем длину - количество звёзд
             print("Количество звёзд:", stars_count)
             try:
                 text_elem = card.find_element(By.CSS_SELECTOR, ".course-review-card__text .show-more__content")
                 text = text_elem.text.strip()
                 print("Текст отзыва:", text)
             except:
-                text = "[текст не найден]"
+                text = "[текст не найден]"  # если не удалось скачать
             # добавляем в словарь
             data.append({
                  "Курс": url.split("/")[4],  # ID курса из URL
@@ -96,7 +95,7 @@ def parse_course(course_id):
 for i, course_id  in enumerate(course_ids):
     parse_course(course_id)
     if i < len(course_ids) - 1:
-        delay = random.randint(20, 50)
+        delay = random.randint(20, 50)  # делаем рандомную задержку перед следующим курсом
         print(f"Ожидание {delay} секунд перед следующим курсом...")
         sleep(delay)
 
@@ -104,9 +103,8 @@ for i, course_id  in enumerate(course_ids):
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 filename = f"stepik_all_reviews_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
 filepath = os.path.join(OUTPUT_DIR, filename)
-
-df = pd.DataFrame(data)
-df.to_excel(filepath, index=False, engine='openpyxl')
+df = pd.DataFrame(data)  # преобразуем словарь в датафрейм, где ключи - названия колонок
+df.to_excel(filepath, index=False, engine='openpyxl')  # сохраняем датафрейм в Excel
 
 print(f"Сохранено {len(data)} уникальных курсов в:")
 print(filepath)
