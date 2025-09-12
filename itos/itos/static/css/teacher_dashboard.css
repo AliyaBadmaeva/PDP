@@ -7,7 +7,7 @@
         .wrapper {
             height: 322px;
             margin: 0 auto;
-            width: 1250px;
+            width: 1200px;
         }
 
 
@@ -84,34 +84,7 @@
         height: 5px;
         }
 
-        .footer-wrapper {
-            padding-top: 10px;
-            display: center;
-            margin: 0 auto 0 auto;
-            width: 1250px;
-        }
-        .footer-content {
-            display: center;
-            margin: 0 auto;
-            }
-        .footer {
-            height: 150px;
-            display: center;
-        }
-        .footer-white-cards {
-            height: 100px;
-            padding: 0 10px 0 10px;
-            margin: 0 100px;
-            display: inline-block;
-        }
-        .rights {
-            height: 10px;
-            margin: 0 100px;
-        }
 
-        .logo-muiv-footer {
-            padding-bottom: 0;
-        }
         .dark-blue-logo-text {
             color: #132041;
             font-size: 24px;
@@ -200,8 +173,8 @@
             width: 1200px;
             display: flex;
             margin: 0 auto;
-            align-items: center;
-            gap: 60px;
+            align-items: flex-start;
+            gap: 50px;
         }
         .download-info {
             width: 550px;
@@ -224,3 +197,49 @@
             line-height: 1;
 
         }
+        .footer-wrapper {
+    padding-top: 10px;
+    width: 100%;
+        }
+        .footer-content {
+            display: block;
+            }
+        .footer {
+            display: block;
+        }
+        .footer-logos {
+        position: relative;
+            display: flex;
+    align-items: center;
+    width: 100%;
+    height: 160px;
+
+
+        }
+        .footer-left-box {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+        .footer-white-cards {
+            padding: 0 10px;
+        }
+        .footer-white-cards:first-child {
+    margin-right: auto;
+}
+.footer-white-cards:last-child {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+        .rights {
+            text-align: left;
+            font-size: 14px;
+            color: #666;
+            width: 100%;
+        }
+
