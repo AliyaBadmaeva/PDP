@@ -7,27 +7,33 @@
         .wrapper {
             height: 322px;
             margin: 0 auto;
+            width: 1250px;
+            margin:0 auto;
+
         }
 
+
         .faq-content {
-            height: 500px;
-            width: 1150px;
-            display: center;
+            width: 1200px;
+            display: flex;
             margin: 0 auto;
+            align-items: flex-start;
+            gap: 60px;
         }
         .faq-info {
-            width: 520px;
+            width: 550px;
             height: 300px;
-            position: absolute;
+            flex-shrink: 0;
         }
+
 
         .faq-logo  {
             background-color: #132041;
             border-radius: 10px;
             height: 322px;
             width: 432px;
-            float: right;
-            margin: 0 auto;
+            margin-left: auto;
+        flex-shrink: 0;
             }
 
         header {
@@ -36,8 +42,7 @@
             width: 1250px;
             height: 117px;
             padding-top: 49px;
-            }
-
+}
     /* --- MAIN NAV --- */
     nav{
       background:#fff;
@@ -72,7 +77,6 @@
 
     nav a:hover::after{width:100%;}
 
-
     .dark-blue-text-faq {
         color: #132041;
     }
@@ -90,7 +94,7 @@
 
 
     .yellow-wrapper {
-        padding: 66px 250px 77px 250px;
+        padding:66px 10px 77px 40px;
         background-color: rgba(255, 193, 7, 0.4);
         display: center;
         height: 544px;
@@ -117,8 +121,8 @@
            }
 
         .menu {
-            margin: 0 30px;
-            font-size: 15px;
+        margin: 0 30px;
+        font-size: 15px;
         }
 
 
@@ -128,10 +132,11 @@
 
         .breadcrumb {
             height: 5px;
+            margin: 0;
         }
         .faq-text-content {
             height: 400px;
-            width: 1200px;
+            width: 1250px;
             display: center;
             margin: 0 auto;
         }
