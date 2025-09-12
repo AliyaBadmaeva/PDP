@@ -95,10 +95,11 @@
 
     .nlp-white-cards{
         display: flex;
-        height: 400px;
         gap: 40px;
         flex-wrap: wrap;
         justify-content: center;
+        margin: 0;
+    padding-left: 0;
         }
 
     .white-card-nlp {
@@ -147,7 +148,7 @@
         height: 5px;
         }
    .light-blue-wrapper-nlp {
-        padding: 50px 250px;
+        padding: 50px 0;
         background-color: #CFE2FF;
         display: center;
         height: 420px;
@@ -238,31 +239,48 @@
 
 
 
-                .footer-wrapper {
-            padding-top: 10px;
-            display: center;
-            margin: 0 auto 0 auto;
-            width: 1250px;
+        .footer-wrapper {
+    padding-top: 10px;
+    width: 100%;
         }
         .footer-content {
-            display: center;
-            margin: 0 auto;
+            display: block;
             }
         .footer {
-            height: 150px;
-            display: center;
+            display: block;
         }
-        .footer-white-cards {
-            height: 100px;
-            padding: 0 10px 0 10px;
-            margin: 0 100px;
-            display: inline-block;
-        }
-        .rights {
-            height: 10px;
-            margin: 0 100px;
-        }
+        .footer-logos {
+        position: relative;
+            display: flex;
+    align-items: center;
+    width: 100%;
+    height: 160px;
 
-        .logo-muiv-footer {
-            padding-bottom: 0;
+
+        }
+        .footer-left-box {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+        .footer-white-cards {
+            padding: 0 10px;
+        }
+        .footer-white-cards:first-child {
+    margin-right: auto;
+}
+.footer-white-cards:last-child {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+        .rights {
+            text-align: left;
+            font-size: 14px;
+            color: #666;
+            width: 100%;
         }
