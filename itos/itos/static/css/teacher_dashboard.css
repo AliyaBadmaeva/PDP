@@ -58,8 +58,9 @@
         border-radius: 10px;
         height: 322px;
         width: 432px;
-        float: right;
         margin: 0 auto;
+        flex-shrink: 0;
+        float: none;
             }
 
 
@@ -150,73 +151,67 @@
         display: inline-block;
         }
     .grey-wrapper-download {
-        padding: 5px 200px 20px 200px;
         background-color: #D9D9D9;
-        display: center;
-        height: 534px;
+        height: 504px;
     }
         .download-text-content {
-        height: 500px;
+        height: 400px;
         width: 1200px;
-        display: center;
         margin: 0 auto;
         padding-top: 90px;
         }
     .dark-wrapper-upload {
-        padding: 5px 350px 20px 350px;
         background-color: #132041;
-        display: center;
-        height: 455px;
+        height: 405px;
+        padding-top: 50px;
     }
 
 
     .download-btn{
-            background-color: white;
-            border-radius: 10px;
-            display: center;
-            height: 68px;
-            width: 498px;
-            text-align: center;
-            padding-top: 20px;
-            margin: 67px auto 40px auto;
+       background-color: white;
+       border-radius: 10px;
+       margin: 0 auto;
+       height: 68px;
+       width: 498px;
+       text-align: center;
+       padding-top: 20px;
+       margin: 20px auto 0;
 
 }
     .information-text{
-            background-color: white;
-            border-radius: 10px;
-            display: center;
-            height: 160px;
-            width: 857px;
-            text-align: center;
-            padding-top: 1px;
-            margin: 67px auto 40px auto;
+        background-color: white;
+        border-radius: 10px;
+        height: 160px;
+        width: 857px;
+        align-items: center;
+        text-align: center;
+        padding-top: 1px;
+        margin: 20px auto 0;
 
 }
-
-
 
     .red-text {
         color: #DC3545;
         font-size: 32px;
         text-decoration:none;
         }
-                .upload-content {
-            height: 400px;
+    .upload-content {
             width: 1200px;
-            display: center;
+            display: flex;
             margin: 0 auto;
+            align-items: center;
+            justify-content: space-between;
         }
         .download-info {
-
             width: 550px;
             height: 300px;
-            position: absolute;
+            flex-shrink: 0;
+
         }
         .button-content {
-        height: 400px;
-        width: 1200px;
-        display: center;
-        margin: 0 auto;
+            height: 400px;
+            text-align: center;
+            margin: 20px auto 20px auto;
         }
 
         .text-info-text {
