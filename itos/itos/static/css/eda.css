@@ -19,13 +19,13 @@
             box-sizing: border-box;
             padding-top: 0;
         }
-        .eda-img img {
-            display: block;
-            margin: 0;
-    padding: 0;
-    line-height: 0;
-    font-size: 0;
+
+        .viz {
+        border-radius: 10px;
+        height: 800px;
+        width: 500px;
 }
+
 
 
         .eda-info {
