@@ -92,20 +92,44 @@
         font-weight: 900px;
         }
 
+
+
+    .nlp-white-cards{
+        display: flex;
+        height: 400px;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+
+    .white-card-nlp {
+        border-radius: 10px;
+        background-color: white;
+        width: 400px;
+        height: 250px;
+        padding: 10px 10px 0 30px;
+        margin: 0 90px 0 90px;
+        display: inline-block;
+        }
+
     .card-about-nlp {
         border-radius: 10px;
         background-color: white;
         width: 400px;
         height: 320px;
         padding: 10px 20px 0 30px;
-        margin: 50px 70px 0 10px;
-        display: inline-block;
+        }
+    .white-cards-ml{
+        display: center;
+        }
+        .second-nlp-content {
+        height: 400px;
+        width: 1300px;
+        display: center;
+        margin: 0 auto;
+
         }
 
-    .nlp-white-cards{
-        display: center;
-        height: 400px;
-        }
 
     .menu {
         margin: 0 30px;
@@ -208,26 +232,10 @@
         display: center;
         height: 500px;
     }
-    .second-nlp-content {
-        height: 400px;
-        width: 1300px;
-        display: center;
-        margin: 0 auto;
 
-        }
-    .white-card-nlp {
-        border-radius: 10px;
-        background-color: white;
-        width: 400px;
-        height: 250px;
-        padding: 10px 10px 0 30px;
-        margin: 0 90px 0 90px;
-        display: inline-block;
-        }
 
-    .white-cards-ml{
-        display: center;
-        }
+
+
                 .footer-wrapper {
             padding-top: 10px;
             display: center;
