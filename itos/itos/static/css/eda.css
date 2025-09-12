@@ -5,20 +5,32 @@
         }
 
         .wrapper {
-            height: 322px;
+            min-height: 322px;
             margin: 0 auto;
         }
 
         .eda-content {
-            height: 480px;
             width: 1200px;
-            display: center;
+            height: 322px;
+            display: flex;
+            align-items: flex-start;
             margin: 0 auto;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding-top: 0;
         }
+        .eda-img img {
+            display: block;
+            margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-size: 0;
+}
+
+
         .eda-info {
             width: 550px;
             height: 300px;
-            position: absolute;
         }
         header {
             display: center;
@@ -27,6 +39,10 @@
             height: 117px;
             padding-top: 49px;
             }
+    .main-header {
+    position: relative;
+    z-index: 1000;
+}
 
     /* --- MAIN NAV --- */
     nav{
@@ -63,16 +79,13 @@
     nav a:hover::after{width:100%;}
 
     .yellow-wrapper-eda {
-        padding: 5px 200px 20px 200px;
+        padding: 0 30px 0 70px;
         background-color: rgba(255, 193, 7, 0.4);
-        display: center;
-        height: 634px;
+        min-height: 420px;
     }
         .dark-wrapper-eda {
-        padding: 5px 200px 20px 200px;
+        padding: 0 30px 0 70px;
         background-color: #132041;
-        display: center;
-        height: 634px;
     }
 
     .dark-blue-text-eda {
@@ -123,12 +136,15 @@
 
     .eda-img  {
         border-radius: 10px;
-        height: 277px;
-        width: 480px;
-        float: right;
-        margin: 0 30px 20px 40px;
+        height: 350px;
+        width: 530px;
+            line-height: 0;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
 
         }
+
     .photo {
         height: 322px;
         }
@@ -138,29 +154,41 @@
         }
 
     .eda-text-content {
-        height: 400px;
         width: 1200px;
-        display: center;
         margin: 0 auto;
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
         }
 
 
    .light-blue-wrapper-eda {
-        padding: 10px 0;
+        padding: 30px 70px 50px 70px;
         background-color: #CFE2FF;
-        display: center;
-        height: 700px;
+        display: flex;
+        justify-content: center;
     }
 
 
     .eda-viz-imgs{
-        display: center;
-        }
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 0 45px 20px 0;
+        flex-wrap: wrap;
+        width: 100%;
+}
+.eda-viz-content h2 {
+    width: 100%;
+    margin: 20px 0;
+}
     .eda-viz-content {
 
-        width: 1100px;
-        display: center;
+        width: 1200px;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
             .footer-wrapper {
             padding-top: 10px;
