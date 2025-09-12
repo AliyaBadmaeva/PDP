@@ -7,6 +7,7 @@
         .wrapper {
             height: 322px;
             margin: 0 auto;
+            width: 1250px;
         }
 
 
@@ -58,7 +59,7 @@
         border-radius: 10px;
         height: 322px;
         width: 432px;
-        margin: 0 auto;
+        margin-left: auto;
         flex-shrink: 0;
         float: none;
             }
@@ -200,12 +201,13 @@
             display: flex;
             margin: 0 auto;
             align-items: center;
-            justify-content: space-between;
+            gap: 60px;
         }
         .download-info {
             width: 550px;
             height: 300px;
             flex-shrink: 0;
+
 
         }
         .button-content {
