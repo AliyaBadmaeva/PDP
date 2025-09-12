@@ -10,15 +10,15 @@
         }
 
         .about-content {
-            height: 500px;
-            width: 1150px;
-            display: center;
+            width: 1200px;
+            height: 322px;
+            display: flex;
+            align-items: flex-start;
             margin: 0 auto;
         }
         .about-info {
             width: 520px;
             height: 300px;
-            position: absolute;
         }
 
         header {
@@ -28,7 +28,10 @@
             height: 117px;
             padding-top: 49px;
             }
-
+    .main-header {
+    position: relative;
+    z-index: 1000;
+}
     /* --- MAIN NAV --- */
     nav{
       background:#fff;
@@ -79,15 +82,18 @@
     }
 
     .dark-blue-text-about-center {
+        width: 100%;
         text-align: center;
+        margin: 20px 0;
         }
 
 
     .light-blue-wrapper {
         padding: 66px 250px 77px 250px;
         background-color: #CFE2FF;
-        display: center;
-        height: 350px;
+        display: flex;
+        justify-content: center;
+        min-height: 350px;
     }
 
     h1.dark-blue-text {
@@ -116,7 +122,10 @@
     }
 
     .about-white-cards{
-        display: center;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        flex-wrap: nowrap;
         }
 
     .menu {
@@ -125,11 +134,11 @@
         }
 
     .about-img  {
-        border-radius: 20px;
+        border-radius: 10px;
         height: 322px;
-        width: 429px;
-        float: right;
-        margin: 0 auto;
+        width: 432px;
+        margin-left: auto;
+        flex-shrink: 0;
         }
 
     .breadcrumb {
@@ -137,10 +146,11 @@
         }
 
     .about-text-content {
-        height: 400px;
         width: 1200px;
-        display: center;
         margin: 0 auto;
+        display: flex;
+        gap: 60px;
+        flex-wrap: wrap;
         }
         .footer-wrapper {
             padding-top: 10px;
