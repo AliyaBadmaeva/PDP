@@ -12,13 +12,14 @@
         .program-content {
             height: 500px;
             width: 1150px;
-            display: center;
+            display: flex;
             margin: 0 auto;
+            justify-content: space-between;
+            align-items: flex-start;
         }
         .program-info {
             width: 550px;
             height: 300px;
-            position: absolute;
         }
 
         header {
@@ -109,13 +110,13 @@
    .dark-blue-wrapper-contact {
         padding: 50px 250px;
         background-color: #132041;
-        display: center;
+        display: flex;
         height: 450px;
     }
     .contact-text-content {
         height: 400px;
         width: 1200px;
-        display: center;
+        display: flex;
         margin: 0 auto;
         }
     .card-about-contact {
@@ -124,38 +125,57 @@
         width: 400px;
         height: 250px;
         padding: 10px 20px 0 30px;
-        margin: 100px 70px 0 70px;
-        display: inline-block;
+        margin: 100px 0 0 0;
         }
 
     .contact-white-cards{
-        display: center;
+        display: flex;
+        justify-content: center;
+        gap: 70px;
+        flex-wrap: nowrap;
         }
-            .footer-wrapper {
-            padding-top: 10px;
-            display: center;
-            margin: 0 auto 0 auto;
-            width: 1250px;
+        .footer-wrapper {
+    padding-top: 10px;
+    width: 100%;
         }
         .footer-content {
-            display: center;
-            margin: 0 auto;
+            display: block;
             }
         .footer {
-            height: 150px;
-            display: center;
+            display: block;
         }
-        .footer-white-cards {
-            height: 100px;
-            padding: 0 10px 0 10px;
-            margin: 0 100px;
-            display: inline-block;
-        }
-        .rights {
-            height: 10px;
-            margin: 0 100px;
-        }
+        .footer-logos {
+        position: relative;
+            display: flex;
+    align-items: center;
+    width: 100%;
+    height: 160px;
 
-        .logo-muiv-footer {
-            padding-bottom: 0;
+
+        }
+        .footer-left-box {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+        .footer-white-cards {
+            padding: 0 10px;
+        }
+        .footer-white-cards:first-child {
+    margin-right: auto;
+}
+.footer-white-cards:last-child {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+        .rights {
+            text-align: left;
+            font-size: 14px;
+            color: #666;
+            width: 100%;
         }
