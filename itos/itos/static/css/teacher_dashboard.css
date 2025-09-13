@@ -7,7 +7,6 @@
         .wrapper {
             height: 322px;
             margin: 0 auto;
-            width: 1200px;
         }
 
 
@@ -144,7 +143,6 @@
     .download-btn{
        background-color: white;
        border-radius: 10px;
-       margin: 0 auto;
        height: 68px;
        width: 498px;
        text-align: center;
