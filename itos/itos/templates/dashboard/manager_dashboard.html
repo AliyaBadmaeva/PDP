@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Личный кабинет менеджера</title>
+    <title>ИТОС | Личный кабинет менеджера</title>
 </head>
 <body>
 
@@ -35,7 +35,7 @@
         <div class="hello-info">
         <nav class="breadcrumb">
         <a href="/">Главная</a>
-        <span>&gt;Загрузить отчет</span>
+        <span>&gt;Загрузить отзывы</span>
         </nav>
       <h1 class="red-text" style="color:#DC3545">Здравствуйте, {{ request.user.name }} {{ request.user.patronymic }}!<br>
         Сегодня прекрасный день<br>
@@ -61,17 +61,17 @@
     <div class="upload-white-cards">
       <article class="card-about-upload">
         <p class="dark-blue-text-upload">
-            <b>1. Откройте<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;Excel,<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;заполните<br>
+            <b>1. Скачайте<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;шаблон Excel<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;и заполните<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;отзывами.</b></p>
       </article>
       <article class="card-about-upload">
         <p class="dark-blue-text-upload">
             <b>2. Выберите<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;файл<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;Excel<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;для загрузки.</b></p>
+                &nbsp;&nbsp;&nbsp;&nbsp;файл Excel<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;для загрузки<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;отзывов.</b></p>
       </article>
       <article class="card-about-upload">
         <p class="dark-blue-text-upload">
@@ -93,13 +93,19 @@
 
 <section class="dark-wrapper-upload">
   <div class="button-content">
-    <div class="upload-btn">
+      <div class="upload-btn">
+      <a href="{% static 'docs/Шаблон_отчета.xlsx' %}"
+       class="btn-upload-btn" download="Шаблон_отчета.xlsx">
+        Скачать шаблон Excel
+    </a></div>
+<div class="upload-btn">
       <a href="/blog/nlp/" class="btn-upload-btn">Выберите Excel для загрузки</a>
       </div>
 
       <div class="upload-btn">
         <a href="/blog/nlp/" class="btn-upload-btn">Загрузить отчет</a>
   </div>
+
   </div>
 </section>
 
