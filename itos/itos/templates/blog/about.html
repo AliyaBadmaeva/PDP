@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ИТОС|О программе</title>
+    <title>ИТОС | О программе</title>
 
 </head>
 <body>
@@ -80,15 +80,25 @@
       <h2 class="dark-blue-text-about-center">Вы можете скачать доступную в<br>данный момент НСИ</h2>
 
     <div class="about-white-cards">
-      <article class="card-about-program-second">
-        <h2 class="dark-blue-text-about">Требования к системе</h2>
-      </article>
-      <article class="card-about-program-second">
-        <h2 class="dark-blue-text-about">Руководство пользователя</h2>
-      </article>
-      <article class="card-about-program-second">
-        <h2 class="dark-blue-text-about">Техническое задание</h2>
-      </article>
+        <!-- 1. Требования к системе -->
+      <a href="{% static 'docs/Требования_к_системе.pdf' %}"
+       class="doc-btn" download="Требования_к_системе.pdf">
+        Требования к системе
+    </a>
+      <!-- 2. Руководство пользователя -->
+        {% load static %}
+{% if manual_url %}
+  <div class="manual-block">
+    <a href="{% static manual_url %}" class="doc-btn" download>
+      Руководство пользователя
+    </a>
+  </div>
+{% endif %}
+        <!-- 3. Техническое задание -->
+    <a href="{% static 'docs/МУИВ 762.02.00.00.000 Т3 Техническое задание.pdf' %}"
+       class="doc-btn" download="МУИВ 762.02.00.00.000 Т3 Техническое задание.pdf">
+        Техническое задание
+    </a>
     </div>
   </div>
 </section>
@@ -121,3 +131,4 @@
         </footer>
 </body>
 </html>
+
