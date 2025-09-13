@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
 from django.views.generic import TemplateView
 
 
@@ -41,7 +42,12 @@ class EdaView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'  # куда отправлять неавторизованных
 
 
-
-
-
-
+def about_page(request):
+    role_docs = {
+        'студент':     'docs/student_manual.pdf',
+        'преподаватель': 'docs/teacher_manual.pdf',
+        'менеджер':    'docs/manager_manual.pdf',
+    }
+    return render(request, 'blog/about.html', {
+        'manual_url': role_docs.get(request.user.role, ''),
+    })
