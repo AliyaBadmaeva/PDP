@@ -121,13 +121,33 @@
         display: inline-block;
     }
 
-    .about-white-cards{
-        display: flex;
-        justify-content: center;
-        gap: 5px;
-        flex-wrap: nowrap;
-        }
+.doc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 365px;
+    height: 68px;
+    background: #ffffff;
+    border: 1px solid #005baa;
+    border-radius: 10px;
+    color: #132041;
+    margin-right: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .25s;
+}
+.doc-btn:hover {
+    background: #005baa;
+    color: #ffffff;
+}
 
+.about-white-cards {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: nowrap;
+}
     .menu {
         margin: 0 30px;
         font-size: 15px;
