@@ -1,11 +1,12 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/manager_dashboard.css' %}">
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ИТОС | Личный кабинет менеджера</title>
+    <link rel="stylesheet" href="{% static 'css/manager_dashboard.css' %}">
 </head>
 <body>
 
@@ -23,6 +24,7 @@
 	    <a class="menu" href="/blog/faq/">Часто задаваемые вопросы</a>
 	    <a class="menu" href="/blog/about/">О программе</a>
         <a class="menu" href="/blog/contacts/">Контакты</a>
+        <a class="menu" href="{% url 'accounts:logout' %}">Выйти</a>
 
 </div>
 </nav>
@@ -52,7 +54,7 @@
           </div>
 </div>
 </section>
-
+{% block content %}
 
 <section class="light-blue-wrapper-upload">
   <div class="upload-text-content">
@@ -93,22 +95,36 @@
 
 <section class="dark-wrapper-upload">
   <div class="button-content">
-      <div class="upload-btn">
+
       <a href="{% static 'docs/Шаблон_отчета.xlsx' %}"
-       class="btn-upload-btn" download="Шаблон_отчета.xlsx">
+         class="btn-common" download>
         Скачать шаблон Excel
-    </a></div>
-<div class="upload-btn">
-      <a href="/blog/nlp/" class="btn-upload-btn">Выберите Excel для загрузки</a>
+    </a>
+<form method="post" enctype="multipart/form-data" class="upload-controls">
+      {% csrf_token %}
+    <label class="btn-common input-file-btn">
+      <input type="file" name="excel" accept=".xlsx,.xls" required>
+        Выбрать файл
+      </label>
+      <button type="submit" class="btn-common">Загрузить отзывы</button>
+    </form>
+
+  </div>
+
+    {% if messages %}
+  <div class="messages-box">
+    <ul>
+    {% for m in messages %}
+      <li class="{{ m.tags }}">{{ m }}</li>
+    {% endfor %}
+  </ul>
       </div>
-
-      <div class="upload-btn">
-        <a href="/blog/nlp/" class="btn-upload-btn">Загрузить отчет</a>
-  </div>
-
-  </div>
+{% endif %}
 </section>
 
+
+
+{% endblock %}
     <footer class="footer-wrapper">
         <div class="footer-content">
             <div class="footer-left-box">
