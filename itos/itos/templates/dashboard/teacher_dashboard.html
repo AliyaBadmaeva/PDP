@@ -21,6 +21,7 @@
 	    <a class="menu" href="/blog/faq/">Часто задаваемые вопросы</a>
 	    <a class="menu" href="/blog/about/">О программе</a>
         <a class="menu" href="/blog/contacts/">Контакты</a>
+        <a class="menu" href="{% url 'accounts:logout' %}">Выйти</a>
 
 </div>
 </nav>
@@ -99,7 +100,7 @@
       </div>
 
       <div class="download-btn">
-        <a href="/blog/nlp/" class="btn-download-btn red-text">Скачать отчет</a>
+        <a href="{% url 'dashboard:export_reviews' %}" class="btn-download-btn red-text">Скачать отчет</a>
   </div>
   </div>
 </section>
