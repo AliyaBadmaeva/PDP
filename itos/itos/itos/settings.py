@@ -1,8 +1,8 @@
 import os
 from pathlib import Path
-import sys
 from dotenv import load_dotenv
 import jaydebeapi
+import signal, sys, atexit
 
 load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "blog",
     "accounts",
     "dashboard",
-    "dl",
+    "reviews",
 ]
 
 MIDDLEWARE = [
@@ -130,3 +130,15 @@ DATABASES = {
     }
 }
 
+
+# все сессии удаляются в режиме разработчика
+def logout_all(signum=None, frame=None):
+    from django.contrib.sessions.models import Session
+    Session.objects.all().delete()
+    print('\n Все сессии удалены (dev-режим)')
+    sys.exit(0)
+
+
+# регистрируем на Ctrl+C и штатное завершение
+signal.signal(signal.SIGINT, logout_all)
+atexit.register(logout_all)
