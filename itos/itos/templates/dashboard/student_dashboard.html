@@ -23,6 +23,7 @@
 	    <a class="menu" href="/blog/faq/">Часто задаваемые вопросы</a>
 	    <a class="menu" href="/blog/about/">О программе</a>
         <a class="menu" href="/blog/contacts/">Контакты</a>
+        <a class="menu" href="{% url 'accounts:logout' %}">Выйти</a>
 
 </div>
 </nav>
@@ -104,10 +105,10 @@
       <!-- 1. выбор предмета -->
       <div class="form-row">
         <select name="learning_subject" id="id_learning_subject" required>
-          <option value="disabled selected">Выберите предмет</option>
+          <option value="" disabled selected>Выберите предмет</option>
           {% for ls in available_subjects %}
             <option value="{{ ls.id_learning_subjects }}">
-              {{ ls.subject.name_of_subject }}
+              {{ ls.subject_with_semester }}
             </option>
           {% endfor %}
         </select>
@@ -125,14 +126,16 @@
 
       <!-- 3. кнопка -->
       <button type="submit" class="submit-btn">Отправить отзыв</button>
+        {% if sentiment_label %}
+
+{% endif %}
+
     </form>
 
   </div>
 </section>
 
 <section class="dark-wrapper-upload">
-
-
     <div class="last-reviews-header">
       <h2 class="reviews-title">Ваши отзывы</h2>
       <h2 class="reviews-count">Количество отзывов: {{ total_reviews }}</h2>
@@ -141,7 +144,7 @@
         {% for r in reviews|slice:":2" %}
         <div class="review-card">
             <div class="review-meta"><b>{{ r.date_of_loading|date:"d.m.Y" }}</b></div>
-            <div class="review-text">{{ r.review }}</div>
+            <div class="review-text">{{ r.review|truncatechars:90 }}</div>
 
 
 </div>
@@ -179,5 +182,19 @@
             </div>
         </div>
         </footer>
+<!-- ==========  СЧЁТЧИК СИМВОЛОВ  ========== -->
+<script>
+(function(){
+    const textarea = document.getElementById('id_review');
+    const counter  = document.getElementById('counter');
+    if (!textarea || !counter) return;          // на всякий случай
+
+    function updateCounter(){
+        counter.textContent = textarea.value.length;
+    }
+    textarea.addEventListener('input', updateCounter); // современное событие
+    updateCounter();                                   // установить 0 при загрузке
+})();
+</script>
 </body>
 </html>
