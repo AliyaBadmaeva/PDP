@@ -197,6 +197,14 @@ class LearningSubject(models.Model):
     def __str__(self):
         return f'{self.subject} - семестр изучения {self.semester_after_learning} | {self.curriculum} '
 
+    def subject_with_semester(self):
+        """
+        Возвращает строку вида:
+        «Базы данных (отзыв доступен с семестра 3)»
+        """
+        return f'{self.subject.name_of_subject} (отзыв доступен с семестра {self.semester_after_learning})'
+
+
 
 class Review(models.Model):
     SCORE_CHOICES = [
@@ -235,10 +243,19 @@ class Review(models.Model):
     )
 
     name_of_score = models.CharField(
-        max_length=13,
+        max_length=15,
         choices=SCORE_CHOICES,
         null=True,
         blank=True
+    )
+    # кто физически нажал «Загрузить». Если пусто - студент, если нет - точно менеджер
+    uploaded_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='reviews_uploaded',
+        db_column='uploaded_by_id',
+        verbose_name='Загрузил'
     )
 
     class Meta:
