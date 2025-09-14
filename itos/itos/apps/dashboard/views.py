@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import TemplateView
-from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ValidationError
 from django.conf import settings
@@ -126,6 +125,15 @@ class StudentDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
                                  learning_subject_id=ls_id).exists():
             messages.error(request, 'Вы уже оставляли отзыв по этой дисциплине.')
             return self.get(request, *args, **kwargs)
+
+        if len(text) < 3:
+            messages.error(request, 'Отзыв должен быть не менее 3 символов.')
+            return self.get(request, *args, **kwargs)
+
+        if len(text) > 512:
+            messages.error(request, 'Отзыв не должен превышать 512 символов.')
+            return self.get(request, *args, **kwargs)
+
         # Распознаём тональность
         score, label = get_sentiment(text)
 
@@ -196,7 +204,7 @@ class ManagerDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
         if skipped:
             messages.warning(request, 'Пропущены:\n' + '\n'.join(skipped[:50]))
 
-        return redirect('dashboard:manager')  # PRG
+        return redirect('dashboard:manager')  
 
     def _create_review_from_row(self, row, manager):
         """Возвращает пустую строку если успешно, иначе – причину ошибки.
@@ -207,20 +215,22 @@ class ManagerDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
         sem = int(row['semester'])
 
         if not review_txt:
-            return 'пустой отзыв'
+            return 'Пустой отзыв'
+        if len(review_txt) < 3:
+            return 'Отзыв слишком короткий (минимум 3 символа)'
         if len(review_txt) > 512:
-            return 'отзыв > 512 символов'
+            return 'Отзыв > 512 символов'
 
         try:
             student_user = User.objects.get(username=username, role='студент')
             student = Student.objects.get(id_student=student_user)
         except (User.DoesNotExist, Student.DoesNotExist):
-            return 'студент не найден или у студента нет группы'
+            return 'Студент не найден или у студента нет группы'
 
 
         curriculum = student.student_group.curriculum
         if sem > curriculum.num_of_semesters_of_study:
-            return 'семестр ещё не завершён'
+            return 'Семестр ещё не завершён'
 
         try:
             learn_subj = LearningSubject.objects.get(
@@ -253,8 +263,3 @@ class TeacherDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
 
     def test_func(self):
         return self.request.user.role == 'преподаватель'
-
-
-
-
-
