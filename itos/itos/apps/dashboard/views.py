@@ -12,7 +12,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.db import transaction
 from accounts.models import Review, LearningSubject, Student, User
-from reviews.utils import get_sentiment
+from .utils import get_sentiment
+
 
 MAX_ROWS = 900_000  # чуть меньше лимита Excel
 
@@ -22,6 +23,7 @@ def export_reviews_to_excel(request):  # функция для формиров�
         return HttpResponse('Доступ запрещён', status=403)
 
     # Берём последние 900 000 отзывов
+    print('Отзывы загружаются из dashboard/views.py')
     qs = (Review.objects
           .select_related('learning_subject__subject')
           .order_by('-id_review')  # самые свежие — в начале
@@ -81,6 +83,7 @@ class StudentDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
         return self.request.user.role == 'студент'
 
     def get_context_data(self, **kwargs):
+        print('Файл dashboard/views.py')
         context = super().get_context_data(**kwargs)
         user = self.request.user
         # студент и учебный план
@@ -109,6 +112,7 @@ class StudentDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
         user = request.user
         ls_id = request.POST.get('learning_subject', '').strip()
         text = request.POST.get('review', '').strip()
+        print("из файла dashboard/views.py")
 
         # пустые поля
         if not (ls_id and text):
@@ -179,6 +183,7 @@ class ManagerDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
 
     def post(self, request, *args, **kwargs):
         """POST-загрузка Excel из того же шаблона."""
+        print('Файл dashboard/views.py для загрузки отзывов')
         excel = request.FILES.get('excel')
         if not excel:
             messages.error(request, 'Файл не выбран')
@@ -215,10 +220,11 @@ class ManagerDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
         subject_nm = str(row['name_of_subject']).strip()
         review_txt = str(row['review']).strip()
         sem = int(row['semester'])
+        print("из файла dasboard/views.py создаем отзывы из файла менеджера")
 
-        if not review_txt:
+        if not review_txt or review_txt.lower() == 'nan' or pd.isna(row['review']):
             return 'Пустой отзыв'
-        if len(review_txt) < 3:
+        if len(review_txt) < 3 or review_txt.isspace():
             return 'Отзыв слишком короткий (минимум 3 символа)'
         if len(review_txt) > 512:
             return 'Отзыв > 512 символов'
