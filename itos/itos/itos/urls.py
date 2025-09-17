@@ -8,13 +8,10 @@ admin.site.index_title = "Добро пожаловать в ИТОС!"
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # админка Django
-    #path('blog/', include('blog.urls')),
     path('', RedirectView.as_view(url='/blog/', permanent=False)),
     path('blog/', include('blog.urls')),
     path('accounts/', include('accounts.urls')),
-    #path('', include('blog.urls')),  # Главная страница блога
     path('dashboard/', include('dashboard.urls')),
-    path("reviews/", include("reviews.urls")),
 ]
 
 
