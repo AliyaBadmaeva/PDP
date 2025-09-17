@@ -42,6 +42,7 @@ def export_reviews_to_excel(request):  # функция для формиров�
     # Заголовки
     ws.append([
         'ID отзыва',
+        'Название дисциплины',
         'Текст отзыва',
         'Семестр после изучения',
         'Дата загрузки',
@@ -54,6 +55,7 @@ def export_reviews_to_excel(request):  # функция для формиров�
     for row in reversed(qs):  # reversed - хронологический порядок «сначала старые»
         ws.append([
             row['id_review'],
+            row['learning_subject__subject__name_of_subject'],
             row['review'],
             row['learning_subject__semester_after_learning'],
             row['date_of_loading'].strftime('%d.%m.%Y') if row['date_of_loading'] else '',
@@ -204,7 +206,7 @@ class ManagerDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
         if skipped:
             messages.warning(request, 'Пропущены:\n' + '\n'.join(skipped[:50]))
 
-        return redirect('dashboard:manager')  
+        return redirect('dashboard:manager')
 
     def _create_review_from_row(self, row, manager):
         """Возвращает пустую строку если успешно, иначе – причину ошибки.
