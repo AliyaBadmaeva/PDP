@@ -44,10 +44,10 @@ def export_reviews_to_excel(request):  # функция для формиров�
     # Заголовки
     ws.append([
         'ID отзыва',
+        'Название дисциплины',
         'Текст отзыва',
         'Семестр после изучения',
         'Дата загрузки',
-        'Название дисциплины',
         'Дисциплина',
         'Оценка (числ)',
         'Оценка (назв)'
@@ -61,7 +61,6 @@ def export_reviews_to_excel(request):  # функция для формиров�
             row['review'],
             row['learning_subject__semester_after_learning'],
             row['date_of_loading'].strftime('%d.%m.%Y') if row['date_of_loading'] else '',
-            row['learning_subject__subject__name_of_subject'],
             row['score_of_review'] if row['score_of_review'] is not None else '',
             row['name_of_score'] or ''
         ])
