@@ -7,19 +7,6 @@ class MainView(LoginRequiredMixin, TemplateView):
     template_name = 'blog/main.html'
     login_url = '/accounts/login/'  # куда отправлять неавторизованных
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        user = self.request.user
-        if user.role == 'преподаватель':
-            context['dashboard_link_text'] = 'Статистика'
-            context['dashboard_link_url'] = '/dashboard/teacher_dashboard/'
-        elif user.role == 'менеджер':
-            context['dashboard_link_text'] = 'Загрузить отзывы'
-            context['dashboard_link_url'] = '/dashboard/manager_dashboard/'
-        elif user.role == 'студент':
-            context['dashboard_link_text'] = 'Написать отзыв'
-            context['dashboard_link_url'] = '/dashboard/student_dashboard/'
-        return context
 
 class FaqView(LoginRequiredMixin, TemplateView):
     template_name = 'blog/faq.html'
@@ -51,3 +38,8 @@ def about_page(request):
     return render(request, 'blog/about.html', {
         'manual_url': role_docs.get(request.user.role, ''),
     })
+
+
+
+
+
