@@ -1,16 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404
-from django.core.exceptions import ValidationError
-from django.conf import settings
 from django.http import HttpResponse
 from openpyxl import Workbook
 from datetime import datetime
 import pandas as pd
-from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.db import transaction
 from accounts.models import Review, LearningSubject, Student, User
 from .utils import get_sentiment
 
