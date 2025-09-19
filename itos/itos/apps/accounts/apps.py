@@ -1,4 +1,4 @@
-# Конфигурация приложения accounts в соответствии
+# Конфигурация приложения accounts в соответствии с версиями Django 3.2+
 from django.apps import AppConfig
 
 
