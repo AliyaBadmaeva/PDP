@@ -1,33 +1,51 @@
+# Главный конфиг Django-проекта itos.
+# Загружает переменные окружения (.env), подключается к PostgreSQL через JDBC,
+# очищает сессии при остановке сервера в dev-режиме.
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-import jaydebeapi
-import signal, sys, atexit
+import jaydebeapi     # JDBC-драйвер для СУБД
+import signal, sys, atexit   # обработка Ctrl+C и штатного выхода
 
-load_dotenv()
+# ОКРУЖЕНИЕ
+load_dotenv()  # берём SECRET_KEY, DEBUG, DB_* и пр. из .env
+
+# Корень проекта
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Добавляем папку apps в PYTHONPATH, чтобы писать для импорта from accounts.models import ...
 sys.path.insert(0, str(BASE_DIR / 'apps'))
 
-conn = jaydebeapi.connect(
-    "org.postgresql.Driver",
-    "jdbc:postgresql://localhost:5432/itos",
-    ["postgres", "do_j12498!"],
-    "postgresql-42.7.7.jar"  # относительный путь к jar
-)
-
+# Секретные данные
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 
-
-
+# Домены/IP, с которых разрешён доступ к Django
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
-# редирект на главную после аутентификации
-AUTH_USER_MODEL = 'accounts.User'
-LOGIN_URL = '/accounts/login/'   # куда идти, если не авторизован
-LOGIN_REDIRECT_URL = '/'
 
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
+]
+
+# пути после авторизации
+AUTH_USER_MODEL = 'accounts.User'  # кастомная модель пользователя
+LOGIN_URL = '/accounts/login/'   # куда идти, если не авторизован
+LOGIN_REDIRECT_URL = '/'   # после успешного входа
+
+
+# Приложения
 INSTALLED_APPS = [
     "django.contrib.admin",  # чтобы использовать встроенную админку Джанго
     "django.contrib.auth",
@@ -53,6 +71,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "itos.urls"
 
+# Шаблоны
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -64,7 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'blog.context_processors.dashboard_button',
+                'blog.context_processors.dashboard_button',  # Кнопка в ЛК
             ],
         },
     },
@@ -72,51 +91,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "itos.wsgi.application"
 
-
-
-
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
-
-LANGUAGE_CODE = "ru-RU"
-
-TIME_ZONE = "UTC"
-
-USE_I18N = True
-
-USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [ BASE_DIR / 'static' ]
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# БАЗА ДАННЫХ
+# Подключаемся к PostgreSQL через JDBC-драйвер (jaydebeapi)
+conn = jaydebeapi.connect(
+    "org.postgresql.Driver",
+    "jdbc:postgresql://localhost:5432/itos",
+    ["postgres", "do_j12498!"],
+    "postgresql-42.7.7.jar"  # относительный путь к jar - jar лежит рядом с manage.py
+)
 
 DATABASES = {
     'default': {
@@ -129,9 +111,22 @@ DATABASES = {
     }
 }
 
+# СТАТИКА / МЕДИА
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [ BASE_DIR / 'static' ]
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# ЛОКАЛИЗАЦИЯ
+LANGUAGE_CODE = "ru-RU"
+TIME_ZONE = "UTC"
+USE_I18N = True
+USE_TZ = True
+
+# ОЧИСТКА СЕССИЙ ПРИ ВЫХОДЕ (dev-режим)
 # все сессии удаляются в режиме разработчика
 def logout_all(signum=None, frame=None):
+    """Удаляет все сессии и корректно завершает процесс."""
     from django.contrib.sessions.models import Session
     Session.objects.all().delete()
     print('\n Все сессии удалены (dev-режим)')
@@ -141,3 +136,16 @@ def logout_all(signum=None, frame=None):
 # регистрируем на Ctrl+C и штатное завершение
 signal.signal(signal.SIGINT, logout_all)
 atexit.register(logout_all)
+
+
+
+
+
+
+
+
+
+
+
+
+
