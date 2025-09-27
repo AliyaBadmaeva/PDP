@@ -26,6 +26,8 @@ sys.path.insert(0, str(APPS_DIR))
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
+
+
 # Домены/IP, с которых разрешён доступ к Django
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
@@ -60,6 +62,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'debug_toolbar',
     "blog",
     "accounts",
     "dashboard",
@@ -73,6 +76,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 
 ]
 
@@ -118,6 +122,8 @@ DATABASES = {
     }
 }
 
+INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']  # каким IP-адресам разрешено видеть панель отладки
+
 # СТАТИКА / МЕДИА
 
 STATIC_URL = '/static/'
@@ -143,17 +149,3 @@ def logout_all(signum=None, frame=None):
 
 # регистрируем на Ctrl+C и штатное завершение
 signal.signal(signal.SIGINT, logout_all)
-atexit.register(logout_all)
-
-
-
-
-
-
-
-
-
-
-
-
-
