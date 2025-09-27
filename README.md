@@ -28,6 +28,70 @@
 
 -отладка.
 
+## Структура проекта
+
+itos/                           # корень репозитория
+├── .idea/                      # настройки PyCharm
+├── itos/                       # Django-проект (второй уровень)
+│   ├── apps/                   # приложения (accounts, blog, dashboard)
+|   |   ├── accounts/                 # авторизация, роли, отзывы
+│   |   |   |── migrations/
+│   |   |   |── tests/
+│   |   |   |── __init__.py
+│   |   |   |── admin.py
+│   |   |   |── apps.py
+│   |   |   |── forms.py
+│   |   |   |── models.py
+│   |   |   |── urls.py
+│   |   |   └── views.py
+|   |   ├── blog/                 # статические страницы, главная, context-процессоры
+│   |   |   |── migrations/
+│   |   |   |── __init__.py
+│   |   |   |── admin.py
+│   |   |   |── apps.py
+│   |   |   |── context_processors.py
+│   |   |   |── forms.py
+│   |   |   |── models.py
+│   |   |   |── urls.py
+|   │   |   ├── views.py
+│   |   |   └── tests.py
+|   |   └── dashboard/                # дашборды по ролям (student, teacher, manager)
+|   |   |   ├── migrations/
+|   |   |   ├── __init__.py
+│   |   |   ├── admin.py
+│   |   |   ├── apps.py
+│   |   |   ├── models.py
+│   |   |   ├── urls.py
+│   |   |   ├── utils.py
+│   |   |   ├── views.py
+│   |   └── └── tests.py
+│   ├── itos/                       # настройки (settings, urls, wsgi)
+|   │   ├── settings.py             # настройки сайта
+|   │   ├── settings_cp.py          # настройки для теста критического пути
+|   │   ├── urls.py                 # url сайта
+|   │   ├── asgy.py                 
+|   │   ├── wsgy.py                 
+|   │   └──  __init__.py
+│   ├── static/                    # статические файлы
+|   │   ├── css/                   # стили
+|   │   ├── docs/                  # документы для скачивания       
+|   │   └── img/                   # картинки на сайте
+│   ├── templates/                 # Шаблоны для html-страниц
+|   │   ├── accounts/              # html-страницы для приложения авторизации
+|   │   ├── blog/                  # html-страницы для блога
+|   │   ├── dashboard/             # html-страницы для личного кабинета
+|   │   └── index.html             # базовый шаблон, не используется
+├── research/                      # файлы для парсинга
+├── Badmaeva_AA_RuBert_PDP.ipynb   # Jupyter-ноутбук по дообучению нейросети на русскоязычных отзывах
+├── Badmaeva_AA_PDP.ipynb          # Jupyter-ноутбук по дообучению нейросети на англоязычных отзывах
+├── Badmaeva_AA_PDP_EDA.ipynb      # Jupyter-ноутбук с разведочным анализом данных на рйсскоязычных отзывах
+├── requirements.txt               # зависимости Python - необходимые для установки библиотеки
+├── postgresql-42.7.7.jar          # JDBC-драйвер PostgreSQL
+├── pytest.ini                     # настройки pytest (для модулей тестирования)
+├── main.py                        # entry-point для CLI-утилит
+├── README.md                   
+└── train/val/test *.csv
+
 ## Подбор набора данных для дообучения нейронной сети
 
 > **Датасеты**
@@ -280,7 +344,3 @@ ALTER TABLE student_group ADD CONSTRAINT id_student_groups_and_curric_UNIQUE UNI
 -- Добавим ограничитель в таблицу Студенческие группы
 ALTER TABLE student_group ADD CONSTRAINT id_curriculum_idx FOREIGN KEY (id_curriculum) REFERENCES curriculum (id_curriculum) ON DELETE RESTRICT ON UPDATE CASCADE;
 ```
-
-
-
-
