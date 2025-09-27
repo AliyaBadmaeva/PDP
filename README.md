@@ -120,7 +120,11 @@ python manage.py runserver.
 
 •	[dashboard](https://github.com/AliyaBadmaeva/PDP/tree/main/itos/itos/apps/dashboard) - дашборд в зависимости от роли пользователя
 .
-Для создания приложения внутри проекта нужно ввести команду: python manage.py startapp accounts.
+Для создания приложения внутри проекта нужно ввести команду: 
+
+```
+python manage.py startapp accounts
+```
 
 В приложениях 2 главных файла, остальные файлы могут быть пустыми или отсутствовать, в зависимости от функционала приложения. Минимально требуется наличие файлов: urls.py – для url-ов приложения, views.py – для создания функций для связи с шаблонами html-страниц – уровень представлений. 
 
@@ -276,6 +280,7 @@ ALTER TABLE student_group ADD CONSTRAINT id_student_groups_and_curric_UNIQUE UNI
 -- Добавим ограничитель в таблицу Студенческие группы
 ALTER TABLE student_group ADD CONSTRAINT id_curriculum_idx FOREIGN KEY (id_curriculum) REFERENCES curriculum (id_curriculum) ON DELETE RESTRICT ON UPDATE CASCADE;
 ```
+
 
 
 
