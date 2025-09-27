@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import reverse
+from django.conf import settings
 import logging
 logger = logging.getLogger(__name__)
 
@@ -16,6 +17,7 @@ def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        logger.info(f"username={username}, password={password}")
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)  # создаём сессию
