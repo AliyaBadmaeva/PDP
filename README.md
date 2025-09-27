@@ -31,29 +31,29 @@
 ## Структура проекта
 ```
 itos/                           # корень репозитория
-├── .idea/                      # настройки PyCharm
+├── .idea/                      # настройки PyCharm (не коммитится в Git)
 ├── itos/                       # Django-проект (второй уровень)
 │   ├── apps/                   # приложения (accounts, blog, dashboard)
-|   |   ├── accounts/                 # авторизация, роли, отзывы
+|   |   ├── accounts/           # авторизация, роли, отзывы
+│   |   |   |── migrations/     # миграции БД
+│   |   |   |── tests/          # unit-тесты приложения
+│   |   |   |── __init__.py
+│   |   |   |── admin.py        # админка Django
+│   |   |   |── apps.py         # # метаданные приложения
+│   |   |   |── forms.py        # форма авторизации
+│   |   |   |── models.py       # таблицы БД PostreSQL: User, Review, Student и др.
+│   |   |   |── urls.py         # маршруты /accounts/*
+│   |   |   └── views.py        # login, logout, role_redirect
+|   |   ├── blog/                # статические страницы, главная, context-процессоры
 │   |   |   |── migrations/
-│   |   |   |── tests/
 │   |   |   |── __init__.py
 │   |   |   |── admin.py
 │   |   |   |── apps.py
+│   |   |   |── context_processors.py   # глобальные переменные шаблонов
 │   |   |   |── forms.py
 │   |   |   |── models.py
-│   |   |   |── urls.py
-│   |   |   └── views.py
-|   |   ├── blog/                 # статические страницы, главная, context-процессоры
-│   |   |   |── migrations/
-│   |   |   |── __init__.py
-│   |   |   |── admin.py
-│   |   |   |── apps.py
-│   |   |   |── context_processors.py
-│   |   |   |── forms.py
-│   |   |   |── models.py
-│   |   |   |── urls.py
-|   │   |   ├── views.py
+│   |   |   |── urls.py               # маршруты /blog/*
+|   │   |   ├── views.py              # главная, about, faq, nlp
 │   |   |   └── tests.py
 |   |   └── dashboard/                # дашборды по ролям (student, teacher, manager)
 |   |       ├── migrations/
@@ -61,16 +61,16 @@ itos/                           # корень репозитория
 │   |       ├── admin.py
 │   |       ├── apps.py
 │   |       ├── models.py
-│   |       ├── urls.py
-│   |       ├── utils.py
-│   |       ├── views.py
-│   |       └── tests.py
+│   |       ├── urls.py             # /dashboard/student/, /teacher/, /manager/
+│   |       ├── utils.py            # вспомогательные функции (Excel, PDF)
+│   |       ├── views.py            # дашборды + выгрузки
+│   |       └── tests.py            # тесты дашборда
 │   ├── itos/                       # настройки (settings, urls, wsgi)
-|   │   ├── settings.py             # настройки сайта
-|   │   ├── settings_cp.py          # настройки для теста критического пути
-|   │   ├── urls.py                 # url сайта
-|   │   ├── asgy.py                 
-|   │   ├── wsgy.py                 
+|   │   ├── settings.py             # базовые настройки
+|   │   ├── settings_cp.py          # настройки для критического пути (тесты)
+|   │   ├── urls.py                 # корневой URLConf
+|   │   ├── asgy.py                 # ASGI-обработчик (не используется)  
+|   │   ├── wsgy.py                 # WSGI-обработчик (production)
 |   │   └──  __init__.py
 │   ├── static/                    # статические файлы
 |   │   ├── css/                   # стили
@@ -81,6 +81,7 @@ itos/                           # корень репозитория
 |   │   ├── blog/                  # html-страницы для блога
 |   │   ├── dashboard/             # html-страницы для личного кабинета
 |   │   └── index.html             # базовый шаблон, не используется
+│   └── manage.py                  # запуск сервера, миграции, команды
 ├── research/                      # файлы для парсинга
 ├── Badmaeva_AA_RuBert_PDP.ipynb   # Jupyter-ноутбук по дообучению нейросети на русскоязычных отзывах
 ├── Badmaeva_AA_PDP.ipynb          # Jupyter-ноутбук по дообучению нейросети на англоязычных отзывах
@@ -90,7 +91,7 @@ itos/                           # корень репозитория
 ├── pytest.ini                     # настройки pytest (для модулей тестирования)
 ├── main.py                        # entry-point для CLI-утилит
 ├── README.md                   
-└── train/val/test *.csv
+└── train/val/test *.csv            # датасеты для обучения
 ```
 ## Подбор набора данных для дообучения нейронной сети
 
