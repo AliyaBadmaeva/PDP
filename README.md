@@ -56,15 +56,15 @@ itos/                           # корень репозитория
 |   │   |   ├── views.py
 │   |   |   └── tests.py
 |   |   └── dashboard/                # дашборды по ролям (student, teacher, manager)
-|   |   |   ├── migrations/
-|   |   |   ├── __init__.py
-│   |   |   ├── admin.py
-│   |   |   ├── apps.py
-│   |   |   ├── models.py
-│   |   |   ├── urls.py
-│   |   |   ├── utils.py
-│   |   |   ├── views.py
-│   |   └── └── tests.py
+|   |       ├── migrations/
+|   |       ├── __init__.py
+│   |       ├── admin.py
+│   |       ├── apps.py
+│   |       ├── models.py
+│   |       ├── urls.py
+│   |       ├── utils.py
+│   |       ├── views.py
+│   |       └── tests.py
 │   ├── itos/                       # настройки (settings, urls, wsgi)
 |   │   ├── settings.py             # настройки сайта
 |   │   ├── settings_cp.py          # настройки для теста критического пути
