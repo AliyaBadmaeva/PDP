@@ -6,15 +6,21 @@ from pathlib import Path
 from dotenv import load_dotenv
 import jaydebeapi     # JDBC-драйвер для СУБД
 import signal, sys, atexit   # обработка Ctrl+C и штатного выхода
+from django.conf import settings
+import logging
+
+logger = logging.getLogger(__name__)
+# Флаг для определения, запущены ли тесты
+TESTING = sys.argv[0].endswith('manage.py') and 'test' in sys.argv
 
 # ОКРУЖЕНИЕ
 load_dotenv()  # берём SECRET_KEY, DEBUG, DB_* и пр. из .env
 
 # Корень проекта
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+APPS_DIR = Path(__file__).resolve().parent.parent / 'apps'
 # Добавляем папку apps в PYTHONPATH, чтобы писать для импорта from accounts.models import ...
-sys.path.insert(0, str(BASE_DIR / 'apps'))
+sys.path.insert(0, str(APPS_DIR))
 
 # Секретные данные
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -67,6 +73,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
 ]
 
 ROOT_URLCONF = "itos.urls"
@@ -129,8 +136,9 @@ def logout_all(signum=None, frame=None):
     """Удаляет все сессии и корректно завершает процесс."""
     from django.contrib.sessions.models import Session
     Session.objects.all().delete()
-    print('\n Все сессии удалены (dev-режим)')
-    sys.exit(0)
+    logger.info("All sessions have been logged out.")  # Добавление логирования
+    if not TESTING:  # проверяем флаг - тестирование или нет?
+        sys.exit(0)
 
 
 # регистрируем на Ctrl+C и штатное завершение
