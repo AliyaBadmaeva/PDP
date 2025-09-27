@@ -2,6 +2,9 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.urls import reverse
+import logging
+logger = logging.getLogger(__name__)
 
 
 def login_view(request):
@@ -16,9 +19,12 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)  # создаём сессию
-            return redirect('blog:main')  # редирект на главную страницу блога
+            next_url = request.GET.get('next', reverse('blog:main'))
+            logger.info(f"Перенаправление на {next_url}")  # логирование
+            return redirect(next_url)  # Перенаправление на главную страницу блога или на URL из параметра next
         else:
             # Неверная пара логин/пароль
+            logger.warning("Неправльная аутентификация")
             return render(request, 'accounts/login.html', {'error': 'Неправильное имя пользователя или пароль'})
     else:
         # Показ пустой формы
@@ -47,7 +53,7 @@ def role_redirect(request):
 
 
 def logout_view(request):
-    # Выход из системы + перенаправление на страницу входа.
+    # Выход из системы и перенаправление на страницу входа.
     logout(request)  # убиваем сессию
     return redirect('accounts:login')  # Переход на страницу входа после выхода
 
