@@ -1,4 +1,6 @@
-Django==5.2
+Django==5.2.6
+django-debug-toolbar==6.0.0
+filelock==3.19.1
 JayDeBeApi==1.2.3
 python-dotenv==1.1.1
 torch==2.8.0
@@ -8,3 +10,9 @@ psycopg2==2.9.10
 pandas==2.3.2
 et-xmlfile==2.0.0
 openpyxl==3.1.5
+django-debug-toolbar==6.0.0
+pytest==8.4.2
+pytest-django==4.11.1
+selenium==4.35.0
+safetensors==0.6.2
+setuptools==65.5.0
