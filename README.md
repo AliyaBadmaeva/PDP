@@ -380,7 +380,7 @@ INTERNAL_IPS = ['127.0.0.1']
 
 Run → Edit Configurations → Django runserver (или Python):
 
-Script path: C:\Users\alius\PDP\itos\itos\manage.py
+Script path: \PDP\itos\itos\manage.py
 
 Parameters: runserver localhost:8000
 
