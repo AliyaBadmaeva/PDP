@@ -85,7 +85,7 @@ itos/                           # корень репозитория
 ├── research/                      # файлы для парсинга
 ├── Badmaeva_AA_RuBert_PDP.ipynb   # Jupyter-ноутбук по дообучению нейросети на русскоязычных отзывах
 ├── Badmaeva_AA_PDP.ipynb          # Jupyter-ноутбук по дообучению нейросети на англоязычных отзывах
-├── Badmaeva_AA_PDP_EDA.ipynb      # Jupyter-ноутбук с разведочным анализом данных на рйсскоязычных отзывах
+├── Badmaeva_AA_PDP_EDA.ipynb      # Jupyter-ноутбук с разведочным анализом данных
 ├── requirements.txt               # зависимости Python - необходимые для установки библиотеки
 ├── postgresql-42.7.7.jar          # JDBC-драйвер PostgreSQL
 ├── pytest.ini                     # настройки pytest (для модулей тестирования)
@@ -345,3 +345,48 @@ ALTER TABLE student_group ADD CONSTRAINT id_student_groups_and_curric_UNIQUE UNI
 -- Добавим ограничитель в таблицу Студенческие группы
 ALTER TABLE student_group ADD CONSTRAINT id_curriculum_idx FOREIGN KEY (id_curriculum) REFERENCES curriculum (id_curriculum) ON DELETE RESTRICT ON UPDATE CASCADE;
 ```
+
+## Внедрение нейронной сети
+
+Нейронная сеть определяет тональность благодаря файлу [utils.py](https://github.com/AliyaBadmaeva/PDP/blob/main/itos/itos/apps/dashboard/utils.py) и, в частности, благодаря функции get_sentiment.
+
+## Тестирование
+
+Подготовлены модули тестирования приложения accounts. Для тестирования моделей создан [файл](https://github.com/AliyaBadmaeva/PDP/blob/main/itos/itos/tests/test_models_smoke.py), файлы для смоук-тестирования, тестирования критического пути, GUI/UI и юзабили преставлены в [папке](https://github.com/AliyaBadmaeva/PDP/tree/main/itos/itos/apps/accounts/tests).
+
+## Отладка
+
+1.Для отладки в Django был использован встроенный режим отладки, для этого достаточно в файле папки itos- settings.py указать DEBUG = True.
+
+2.Использовалась библиотека django-debug-toolbar:
+
+Сначала необходима установка: 
+```
+pip install django-debug-toolbar
+```
+Затем добавили в INSTALLED_APPS в settings.py:
+``` 
+INSTALLED_APPS = ['debug_toolbar',]
+```
+Добавили в middleware: 
+```
+MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware']
+```
+Прописали там же
+```
+INTERNAL_IPS = ['127.0.0.1']
+```
+3.Был настроен Django-сервер для режима отладки в PyCharm.
+
+Run → Edit Configurations → Django runserver (или Python):
+
+Script path: C:\Users\alius\PDP\itos\itos\manage.py
+
+Parameters: runserver localhost:8000
+
+Python interpreter: \PDP\itos\itos\venv\Scripts\python.exe
+
+Working directory: \PDP\itos\itos
+
+После чего был запущен режим отладки – значок жучка.
+
