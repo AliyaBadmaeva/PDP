@@ -9,6 +9,14 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from accounts.models import Review, LearningSubject, Student, User
 from .utils import get_sentiment
+import re
+
+def is_russian(text):
+    """Проверяем, что в тексте больше половины символов являются русскими буквами."""
+    if not text:
+        return False
+    russian_chars = re.findall(r'[а-яА-ЯёЁ]', text)
+    return len(russian_chars) > len(text) / 2
 
 
 MAX_ROWS = 900_000  # чуть меньше лимита Excel
@@ -120,6 +128,11 @@ class StudentDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
             messages.error(request, 'Выберите дисциплину из списка.')
             return self.get(request, *args, **kwargs)
 
+        # Проверка на русскоязычность
+        if not is_russian(text):
+            messages.error(request, 'Отзыв должен быть на русском языке.')
+            return self.get(request, *args, **kwargs)
+
         # защита от дубля (на всякий случай)
         if Review.objects.filter(user=user,
                                  learning_subject_id=ls_id).exists():
@@ -225,6 +238,9 @@ class ManagerDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
             return 'Отзыв слишком короткий (минимум 3 символа)'
         if len(review_txt) > 512:  # если больше 512
             return 'Отзыв > 512 символов'
+        # Проверка на русскоязычность
+        if not is_russian(review_txt):
+            return 'Отзыв должен быть на русском языке.'
 
         try:  # Пытаемся найти студента
             student_user = User.objects.get(username=username, role='студент')
