@@ -16,7 +16,7 @@ print('Сейчас ', date)
 
 # настройки
 CHROMEDRIVER_PATH = r'./webdriver/chromedriver.exe'
-OUTPUT_DIR = r'C:/Users/alius/PDP/research/output'
+OUTPUT_DIR = r'./output'
 CATALOG_URL = "https://stepik.org/catalog/310"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
